@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 전체 여백 추가 */
+.movie-details {
+    max-width: 1200px; /* 최대 너비 */
+    margin: 0 auto; /* 중앙 정렬 */
+    padding: 20px; /* 상하 여백 */
+    padding-left: 40px; /* 왼쪽 여백 추가 */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.movie-poster img {
+    width: 300px;
+    border-radius: 10px;
+}
+
+.movie-info {
+    margin-left: 20px;
+}
+
+.movie-info h1 {
+    font-size: 32px;
+    margin: 0;
+}
+
+/* 왼쪽 칼럼 상하 여백 추가 */
+.left-column p {
+    margin: 15px 0; /* 상하 여백을 더 넓게 */
+}
+
+/* 항목을 감싸는 회색 직사각형 스타일 추가 */
+.item-box {
+    background-color: rgba(64, 64, 64, 1); /* 불투명한 회색 (투명도 증가) */
+    border-radius: 10px; /* 모퉁이 둥글게 */
+    padding: 15px; /* 내부 여백 */
+    margin: 10px 0; /* 항목 간의 간격 */
+}
+
+.description {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.additional-info {
+    margin-top: 20px;
+}
+
+.info-item {
+    margin: 5px 0;
+}
+
+.cast-director {
+    margin-top: 20px;
+}
+
+.star {
+    color: gold; /* 별 색상 */
+    font-size: 20px; /* 별 크기 */
+}
+
+.star.empty {
+    color: grey; /* 빈 별 색상 */
+}
+
+.star.half {
+    position: relative;
+}
+
+.star.half::before {
+    content: '★';
+    position: absolute;
+    color: gold;
+    width: 50%; /* 반별을 위해 너비 조정 */
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.description-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.left-column {
+    width: 60%; /* 왼쪽 열의 너비 */
+}
+
+.right-column {
+    width: 35%; /* 오른쪽 열의 너비 */
+    text-align: left; /* 왼쪽 정렬 */
+}
+
+.right-column p {
+    margin: 5px 0; /* 항목 간의 간격 */
+}
+
+.dib-count {
+    display: flex;
+    flex-direction: column; /* 수직 정렬 */
+    align-items: flex-start; /* 왼쪽 정렬 */
+    margin-top: 10px; /* 포스터와의 간격 */
+}
+
+.dib-count span {
+    margin-top: 10px; /* 아이콘과 텍스트 간격 */
+    font-size: 16px; /* 텍스트 크기 */
+}
+
