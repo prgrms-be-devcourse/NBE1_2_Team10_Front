@@ -1,0 +1,560 @@
+.signupScreen{
+  background-color: #141414; /* 배경색을 짙은 회색(#141414)으로 설정합니다. */
+  display: flex; /* 이 요소를 Flexbox 레이아웃으로 설정하여 자식 요소들을 유연하게 배치합니다. */
+  flex-direction: row; /* 자식 요소들을 수평 방향(가로)으로 배치합니다. */
+  justify-content: center; /* 자식 요소들을 수평으로 중앙에 정렬합니다. */
+  width: 100%; /* 이 요소의 너비를 부모 요소의 100%로 설정합니다. */
+}
+
+/*.signupScreen .signupdiv {*/
+/*  background-color: #141414; !* 배경색을 어두운 회색(#141414)으로 설정 *!*/
+/*  height: 1840px;            !* 요소의 높이를 4182px로 설정 *!*/
+/*  overflow: hidden;          !* 요소의 내용이 넘칠 경우 보이지 않도록 설정 *!*/
+/*  position: relative;        !* 자식 요소의 절대 위치를 기준으로 설정 *!*/
+/*  width: 1920px;             !* 요소의 너비를 1900px로 설정 *!*/
+/*}*/
+
+.signupScreen .signupframe {
+    background-color: #141414; /* 배경색을 어두운 회색(#141414)으로 설정 */
+    height: 2000px;            /* 요소의 높이를 4182px로 설정 */
+    overflow: hidden;          /* 요소의 내용이 넘칠 경우 보이지 않도록 설정 */
+    position: relative;        /* 자식 요소의 절대 위치를 기준으로 설정 */
+    width: 1920px;             /* 요소의 너비를 1900px로 설정 */
+}
+
+.signupframe .signupfooter {
+  background: #0f0f0f;             /* 배경색을 어두운 회색으로 설정 */
+  padding: 100px 162px 50px 162px; /* 위쪽 100px, 오른쪽 162px, 아래쪽 50px, 왼쪽 162px의 여백을 설정 */
+  display: flex;                   /* 플렉스박스 레이아웃을 적용하여 자식 항목들을 정렬 */
+  flex-direction: column;          /* 자식 항목들을 세로 방향으로 쌓이도록 설정 */
+  gap: 100px;                     /* 자식 항목들 사이에 100픽셀의 간격을 설정 */
+  align-items: flex-start;         /* 자식 항목들을 수평 방향에서 왼쪽으로 정렬 */
+  justify-content: flex-start;      /* 자식 항목들을 세로 방향에서 위쪽으로 정렬 */
+  width: 1920px;                   /* 요소의 너비를 1920픽셀로 설정 */
+  position: absolute;              /* 요소를 절대 위치로 설정 (부모 요소를 기준으로 위치 설정) */
+  left: 0px;                       /* 왼쪽 가장자리에서 0픽셀 떨어지도록 설정 */
+  bottom: 0px;                     /* 아래쪽 가장자리에서 0픽셀 떨어지도록 설정 */
+  box-sizing: border-box;          /* padding과 border를 너비에 포함하도록 설정 */
+}
+
+
+.signupfooter .signupcontainer {
+  display: flex;                   /* 플렉스박스 레이아웃을 적용하여 자식 항목들을 정렬 */
+  flex-direction: row;            /* 자식 항목들이 가로 방향으로 나란히 배치되도록 설정 */
+  gap: 30px;                      /* 자식 항목들 사이에 30픽셀의 간격을 설정 */
+  align-items: flex-start;         /* 자식 항목들을 수직 방향에서 위쪽으로 정렬 */
+  justify-content: flex-start;      /* 자식 항목들을 수평 방향에서 왼쪽으로 정렬 */
+  align-self: stretch;             /* 부모 요소의 너비에 맞게 아이템을 늘리도록 설정 */
+  flex-shrink: 0;                 /* 공간이 부족할 경우 아이템의 크기가 줄어들지 않도록 설정 */
+  position: relative;              /* 이 요소를 부모 요소를 기준으로 상대적인 위치로 설정 */
+}
+
+.signupframe .signupsub-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+
+.signupframe .signupheading {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Manrope-SemiBold", sans-serif;
+  font-size: 20px;
+  line-height: 150%;
+  font-weight: 600;
+  position: relative;
+  align-self: stretch;
+}
+.signupframe .signuplinks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.signupframe .signuptext-button {
+  color: #999999;
+  text-align: left;
+  font-family: "Manrope-Medium", sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 500;
+  position: relative;
+  align-self: stretch;
+}
+.signupframe .signuplinks-container2 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.signupframe .signupbuttons-container {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.signupframe .signupbutton {
+  background: #1a1a1a;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #262626;
+  border-width: 1px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.signupframe .signupicon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+.signupframe .signupicon2 {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+.signupframe .signupicon3 {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+.signupframe .signupcontainer2 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.signupframe .signupline {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #262626;
+  border-width: 1px 0 0 0;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 0px;
+  position: relative;
+}
+.signupframe .signupcontainer3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.signupframe .signuptext {
+  color: #999999;
+  text-align: left;
+  font-family: "Manrope-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 400;
+  position: relative;
+}
+.signupframe .signupbuttons-container2 {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.signupframe .signuptext-container {
+  color: #999999;
+  text-align: left;
+  font-family: "Manrope-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 400;
+  position: relative;
+}
+.signupframe .signupline2 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #262626;
+  border-width: 1px 0 0 0;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 27px;
+  position: relative;
+  transform-origin: 0 0;
+  transform: rotate(90deg) scale(1, 1);
+}
+.signupframe .signupsignupBox {
+  display: flex; /* 이 요소를 flex 컨테이너로 설정하여 자식 요소들이 flex 아이템이 되도록 설정 */
+  flex-direction: row; /* 자식 요소들을 가로(row) 방향으로 배치 */
+  gap: 80px; /* 자식 요소들 사이에 80px의 간격을 줌 */
+  align-items: flex-start; /* 자식 요소들을 세로 축에서 상단(flex-start)으로 정렬 */
+  justify-content: flex-start; /* 자식 요소들을 가로 축에서 왼쪽(flex-start)으로 정렬 */
+  width: 1589px; /* 요소의 고정된 너비를 1589px로 설정 */
+  height: 1021px; /* 요소의 고정된 높이를 1021px로 설정 */
+  position: relative; /* 이 요소의 위치를 절대 위치로 설정하여 상위 요소 기준으로 배치 */
+  left: 169px; /* 부모 요소의 왼쪽에서 169px 떨어진 위치에 배치 */
+  top: 235px; /* 부모 요소의 위쪽에서 235px 떨어진 위치에 배치 */
+}
+
+.signupframe .signupsub-container2 {
+  display: flex; /* 이 요소를 flex 컨테이너로 설정하여 자식 요소들이 flex 아이템이 되도록 설정 */
+  flex-direction: column; /* 자식 요소들을 세로(column) 방향으로 배치 */
+  gap: 50px; /* 자식 요소들 사이에 50px의 간격을 줌 */
+  align-items: flex-start; /* 자식 요소들을 세로 축에서 왼쪽(flex-start)으로 정렬 */
+  justify-content: flex-start; /* 자식 요소들을 가로 축에서 왼쪽(flex-start)으로 정렬 */
+  flex-shrink: 0; /* 부모 요소가 작아져도 이 요소는 크기가 줄어들지 않음 */
+  width: 641px; /* 요소의 고정된 너비를 641px로 설정 */
+  height: 1021px; /* 요소의 고정된 높이를 1021px로 설정 */
+  position: relative; /* 요소의 위치를 부모 요소 내에서 상대적으로 설정 */
+}
+.signupframe .signupform {
+  background: #0f0f0f; /* 배경색을 짙은 회색(#0f0f0f)으로 설정 */
+  border-radius: 12px; /* 모서리를 12px로 둥글게 설정 */
+  border-style: solid; /* 테두리 스타일을 실선(solid)으로 설정 */
+  border-color: #262626; /* 테두리 색상을 어두운 회색(#262626)으로 설정 */
+  border-width: 1px; /* 테두리 두께를 1px로 설정 */
+  padding: 50px; /* 모든 방향에 50px의 내부 여백(padding)을 설정 */
+  display: flex; /* 이 요소를 flex 컨테이너로 설정하여 자식 요소들을 flex 아이템으로 만듦 */
+  flex-direction: column; /* 자식 요소들을 세로(column) 방향으로 배치 */
+  gap: 50px; /* 자식 요소들 사이에 50px의 간격을 줌 */
+  align-items: flex-start; /* 자식 요소들을 세로 축에서 왼쪽(flex-start)으로 정렬 */
+  justify-content: flex-start; /* 자식 요소들을 가로 축에서 왼쪽(flex-start)으로 정렬 */
+  flex: 1; /* 부모 요소가 늘어나면 이 요소도 크기에 맞게 늘어남 (flex-grow 설정) */
+  height: 100%; /* 고정된 높이를 1021px로 설정 */
+  position: relative; /* 요소의 위치를 부모 요소 내에서 상대적으로 설정 */
+  box-sizing: border-box; /* padding과 border를 너비에 포함하도록 설정 */
+}
+
+.signupframe .signupform > * {
+  margin-bottom: 50px; /* 자식 요소들 사이에 50px의 아래쪽 간격을 설정 */
+}
+
+.signupframe .signupform > *:last-child {
+  margin-bottom: 0; /* 마지막 자식 요소에는 간격을 없앰 */
+}
+
+
+.signupframe .signuptext-container2 {
+  display: flex; /* 이 요소를 flex 컨테이너로 설정하여 자식 요소들이 flex 아이템이 되도록 설정 */
+  flex-direction: column; /* 자식 요소들을 세로(column) 방향으로 배치 */
+  gap: 14px; /* 자식 요소들 사이에 14px의 간격을 줌 */
+  align-items: flex-start; /* 자식 요소들을 세로 축에서 왼쪽(flex-start)으로 정렬 */
+  justify-content: flex-start; /* 자식 요소들을 가로 축에서 왼쪽(flex-start)으로 정렬 */
+  flex-shrink: 0; /* 부모 요소가 작아져도 이 요소는 크기가 줄어들지 않음 */
+  width: 600px; /* 요소의 고정된 너비를 600px로 설정 */
+  position: relative; /* 요소의 위치를 부모 요소 내에서 상대적으로 설정 */
+}
+
+.signupframe .signupheading2 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Manrope-Bold", sans-serif;
+  font-size: 48px;
+  line-height: 150%;
+  font-weight: 700;
+  position: relative;
+  align-self: stretch;
+}
+.signupframe .signupparagraph {
+  color: #999999;
+  text-align: left;
+  font-family: "Manrope-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+}
+.signupframe .signupsub-container3 {
+  background: #0f0f0f;
+  border-radius: 6px;
+  border-style: solid;
+  border-color: #262626;
+  border-width: 6px;
+  flex: 1;
+  width: 606px;
+  position: relative;
+  overflow: hidden;
+}
+.signupframe .signupcontainer5 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 601px;
+  height: 733px;
+  position: absolute;
+  left: calc(50% - 304px);
+  top: calc(50% - 376.5px);
+  overflow: hidden;
+}
+.signupframe .signupimage-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.signupframe .signupimage {
+  border-radius: 12px;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  object-fit: cover;
+}
+.signupframe .signupitems-container {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.signupframe .signupcontainer6 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.signupframe .signupheading3 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Manrope-SemiBold", sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 600;
+  position: relative;
+  align-self: stretch;
+}
+.signupframe .signupinput-field {
+  background: #141414;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #262626;
+  border-width: 1px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 77px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.signupframe .signuptext2 {
+  /*color: #141414;*/
+  background: #141414;
+  text-align: left;
+  font-family: "Manrope-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+}
+.signupframe .signupinput-feild {
+  background: #141414;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #262626;
+  border-width: 1px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 77px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.signupframe .signupinput-field2 {
+  background: #141414;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #262626;
+  border-width: 1px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 77px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.signupframe .signupinput-feild2 {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.signupframe .signupcontainer7 {
+  background: #141414;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #262626;
+  border-width: 1px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 77px;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.signupframe .signupcontainer8 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.signupframe .signupinput-field3 {
+  background: #141414;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #262626;
+  border-width: 1px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 77px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 75px;
+  position: relative;
+}
+.signupframe .signupcontainer9 {
+  background: #e50000;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.signupframe .signuptext3 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Manrope-SemiBold", sans-serif;
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 600;
+  position: relative;
+  width: 128px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signupframe .signupnavbar {
+  padding: 30px 162px 30px 162px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 1921px;
+  position: absolute;
+  left: calc(50% - 961px);
+  top: 0px;
+}
+.signupframe .signuplogo {
+  flex-shrink: 0;
+  width: 199px;
+  height: 60px;
+  position: relative;
+}
+.signupframe .signupvector {
+  width: 30.15%;
+  height: 100%;
+  position: absolute;
+  right: 69.85%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+.signupframe .signupvector2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+  overflow: visible;
+}
+.signupframe .signupicon4 {
+  width: 33.92%;
+  height: 33.92%;
+  position: absolute;
+  right: 31.39%;
+  left: 34.69%;
+  bottom: 32.93%;
+  top: 33.15%;
+  overflow: visible;
+}
+.signupframe .signupstream-vibe {
+  width: 68.34%;
+  height: 33.33%;
+  position: absolute;
+  right: 0%;
+  left: 31.66%;
+  bottom: 33.33%;
+  top: 33.33%;
+  overflow: visible;
+}
+
