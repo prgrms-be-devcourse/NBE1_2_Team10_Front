@@ -124,7 +124,7 @@ export const MainPage = () => {
       console.log('서버 응답 데이터:', responseData);
 
       // 서버에서 받은 데이터를 기반으로 페이지 이동
-      navigate('/search', { state: { data: responseData } }); // 페이지로 이동하며 데이터를 함께 전달
+      navigate('/movie-search', { state: { data: responseData } }); // 페이지로 이동하며 데이터를 함께 전달
     } catch (error) {
       console.error('Error fetching data from server:', error);
     }

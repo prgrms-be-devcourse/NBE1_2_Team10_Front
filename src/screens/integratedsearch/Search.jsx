@@ -116,6 +116,7 @@ export const Search = ({className, ...props}) => {
                         <div className="searchdiv2">제작연도순</div>
                         <div className="searchdiv3">정확도순</div>
                     </div>
+                    {resultData.length >= 1 && (
                     <div className="searchcontainer4">
                         <div className="searchsub-container3">
                             <div className="searchcard">
@@ -127,6 +128,8 @@ export const Search = ({className, ...props}) => {
                             <div className="searchdiv5">{resultData[0].producedYear}</div>
                         </div>
                     </div>
+                        )}
+                    {resultData.length >= 2 && (
                     <div className="searchcontainer4">
                         <div className="searchsub-container3">
                             <div className="searchcard">
@@ -138,6 +141,8 @@ export const Search = ({className, ...props}) => {
                             <div className="searchdiv5">{resultData[1].producedYear}</div>
                         </div>
                     </div>
+                        )}
+                    {resultData.length >= 3 && (
                     <div className="searchcontainer4">
                         <div className="searchsub-container3">
                             <div className="searchcard">
@@ -149,6 +154,8 @@ export const Search = ({className, ...props}) => {
                             <div className="searchdiv5">{resultData[2].producedYear}</div>
                         </div>
                     </div>
+                        )}
+                    {resultData.length >= 4 && (
                     <div className="searchcontainer4">
                         <div className="searchsub-container3">
                             <div className="searchcard">
@@ -160,6 +167,8 @@ export const Search = ({className, ...props}) => {
                             <div className="searchdiv5">{resultData[3].producedYear}</div>
                         </div>
                     </div>
+                        )}
+                    {resultData.length >= 5 && (
                     <div className="searchcontainer4">
                         <div className="searchsub-container3">
                             <div className="searchcard">
@@ -171,6 +180,7 @@ export const Search = ({className, ...props}) => {
                             <div className="searchdiv5">{resultData[4].producedYear}</div>
                         </div>
                     </div>
+                        )}
                 </div>
                 <input className="searchinput"
                        type="text"
