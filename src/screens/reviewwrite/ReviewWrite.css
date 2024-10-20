@@ -1,0 +1,400 @@
+.div,
+.div * {
+  box-sizing: border-box;
+}
+.div {
+  background: #141414;
+  height: 3346px;
+  position: relative;
+  overflow: hidden;
+}
+.div .footer {
+  background: #0f0f0f;
+  padding: 100px 162px 50px 162px;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 1920px;
+  position: absolute;
+  left: 0px;
+  top: 2841px;
+}
+.div .container {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.div .sub-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.div .heading {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Manrope-SemiBold", sans-serif;
+  font-size: 20px;
+  line-height: 150%;
+  font-weight: 600;
+  position: relative;
+  align-self: stretch;
+}
+.div .links-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.div .text-button {
+  color: #999999;
+  text-align: left;
+  font-family: "Manrope-Medium", sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 500;
+  position: relative;
+  align-self: stretch;
+}
+.div .links-container2 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.div .buttons-container {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.div .button {
+  background: #1a1a1a;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #262626;
+  border-width: 1px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.div .icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+.div .icon2 {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+.div .icon3 {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+.div .container2 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.div .line {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #262626;
+  border-width: 1px 0 0 0;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 0px;
+  position: relative;
+}
+.div .container3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.div .text {
+  color: #999999;
+  text-align: left;
+  font-family: "Manrope-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 400;
+  position: relative;
+}
+.div .buttons-container2 {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.div .text-container {
+  color: #999999;
+  text-align: left;
+  font-family: "Manrope-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 400;
+  position: relative;
+}
+.div .line2 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #262626;
+  border-width: 1px 0 0 0;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 27px;
+  position: relative;
+  transform-origin: 0 0;
+  transform: rotate(90deg) scale(1, 1);
+}
+.div .group-4 {
+  position: absolute;
+  inset: 0;
+}
+.div .rectangle-513 {
+  width: 1596px;
+  height: 2524px;
+  position: absolute;
+  left: 162px;
+  top: 240px;
+  overflow: visible;
+}
+.div .line-3 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 1px 0 0 0;
+  width: 1596px;
+  height: 0px;
+  position: absolute;
+  left: 162px;
+  top: 407.49px;
+  transform-origin: 0 0;
+  transform: rotate(-0.018deg) scale(1, 1);
+}
+.div .div2 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Manrope-SemiBold", sans-serif;
+  font-size: 36px;
+  line-height: 150%;
+  font-weight: 600;
+  position: absolute;
+  left: 162px;
+  top: 407px;
+  width: 1596px;
+  height: 2271px;
+}
+.div .div3 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Manrope-SemiBold", sans-serif;
+  font-size: 36px;
+  line-height: 150%;
+  font-weight: 600;
+  position: absolute;
+  left: 162px;
+  top: 240px;
+  width: 1596px;
+  height: 167px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.div .div4 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Manrope-SemiBold", sans-serif;
+  font-size: 36px;
+  line-height: 150%;
+  font-weight: 600;
+  position: absolute;
+  left: 162px;
+  top: 129px;
+  width: 192px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div .navbar {
+  padding: 30px 162px 30px 162px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 1921px;
+  position: absolute;
+  left: calc(50% - 961px);
+  top: 0px;
+}
+.div .logo {
+  flex-shrink: 0;
+  width: 199px;
+  height: 60px;
+  position: relative;
+}
+.div .vector {
+  width: 30.15%;
+  height: 100%;
+  position: absolute;
+  right: 69.85%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+.div .vector2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+  overflow: visible;
+}
+.div .icon4 {
+  width: 33.92%;
+  height: 33.92%;
+  position: absolute;
+  right: 31.39%;
+  left: 34.69%;
+  bottom: 32.93%;
+  top: 33.15%;
+  overflow: visible;
+}
+.div .stream-vibe {
+  width: 68.34%;
+  height: 33.33%;
+  position: absolute;
+  right: 0%;
+  left: 31.66%;
+  bottom: 33.33%;
+  top: 33.33%;
+  overflow: visible;
+}
+.div .buttons-container3 {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 249px;
+  height: 60px;
+  position: relative;
+}
+.div .div5 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Manrope-SemiBold", sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 600;
+  position: relative;
+  width: 114px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div .div6 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Manrope-SemiBold", sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 600;
+  position: relative;
+  width: 115px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div .group-5 {
+  position: absolute;
+  inset: 0;
+}
+.div .rectangle-514 {
+  background: #00ff37;
+  width: 136px;
+  height: 84px;
+  position: absolute;
+  left: 1622px;
+  top: 2678px;
+}
+.div .div7 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Manrope-SemiBold", sans-serif;
+  font-size: 36px;
+  line-height: 150%;
+  font-weight: 600;
+  position: absolute;
+  left: 1622px;
+  top: 2678px;
+  width: 136px;
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div .line-4 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 1px 0 0 0;
+  width: 1596px;
+  height: 0px;
+  position: absolute;
+  left: 162px;
+  top: 2679.99px;
+  transform-origin: 0 0;
+  transform: rotate(-0.071deg) scale(1, 1);
+}
