@@ -446,6 +446,7 @@
   position: absolute;
   left: calc(50% - 961px);
   top: 0px;
+  box-sizing: border-box;          /* padding과 border를 너비에 포함하도록 설정 */
 }
 .searchscreen .searchlogo {
   flex-shrink: 0;

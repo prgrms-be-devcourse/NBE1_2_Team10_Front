@@ -1,18 +1,22 @@
-.div,
-.div * {
-  box-sizing: border-box;
+.briefscreen {
+  background-color: #141414; /* 배경색을 짙은 회색(#141414)으로 설정합니다. */
+  display: flex; /* 이 요소를 Flexbox 레이아웃으로 설정하여 자식 요소들을 유연하게 배치합니다. */
+  flex-direction: row; /* 자식 요소들을 수평 방향(가로)으로 배치합니다. */
+  justify-content: center; /* 자식 요소들을 수평으로 중앙에 정렬합니다. */
+  width: 100%; /* 이 요소의 너비를 부모 요소의 100%로 설정합니다. */
 }
-.div {
-  background: #141414;
-  height: 797px;
-  position: relative;
-  overflow: hidden;
+.briefscreen .briefdiv {
+  background-color: #141414; /* 배경색을 어두운 회색(#141414)으로 설정 */
+  height: 797px;            /* 요소의 높이를 4182px로 설정 */
+  overflow: hidden;          /* 요소의 내용이 넘칠 경우 보이지 않도록 설정 */
+  position: relative;        /* 자식 요소의 절대 위치를 기준으로 설정 */
+  width: 1920px;             /* 요소의 너비를 1900px로 설정 */
 }
-.div .group-4 {
+.briefscreen .briefgroup-4 {
   position: absolute;
   inset: 0;
 }
-.div .div2 {
+.briefscreen .briefdiv2 {
   width: 1596px;
   height: 479px;
   position: absolute;
@@ -20,7 +24,7 @@
   top: 240px;
   overflow: visible;
 }
-.div .div3 {
+.briefscreen .briefdiv3 {
   color: #4d4d4d;
   text-align: left;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -33,7 +37,7 @@
   width: 1596px;
   height: 330px;
 }
-.div .heading {
+.briefscreen .briefheading {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -46,7 +50,7 @@
   width: 788px;
   height: 53px;
 }
-.div ._0-500 {
+.briefscreen .brief_0-500 {
   color: #4d4d4d;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -62,7 +66,7 @@
   align-items: center;
   justify-content: center;
 }
-.div .line-3 {
+.briefscreen .briefline-3 {
   margin-top: -1px;
   border-style: solid;
   border-color: #ffffff;
@@ -75,7 +79,7 @@
   transform-origin: 0 0;
   transform: rotate(-0.071deg) scale(1, 1);
 }
-.div .line-4 {
+.briefscreen .briefline-4 {
   margin-top: -1px;
   border-style: solid;
   border-color: #ffffff;
@@ -88,7 +92,7 @@
   transform-origin: 0 0;
   transform: rotate(-0.071deg) scale(1, 1);
 }
-.div .line-6 {
+.briefscreen .briefline-6 {
   margin-top: -1px;
   border-style: solid;
   border-color: #ffffff;
@@ -101,12 +105,12 @@
   transform-origin: 0 0;
   transform: rotate(90deg) scale(1, 1);
 }
-.div .group-5 {
+.briefscreen .briefgroup-5 {
   width: 136px;
   height: 84px;
   position: static;
 }
-.div .rectangle-514 {
+.briefscreen .briefrectangle-514 {
   background: #00ff37;
   width: 136px;
   height: 84px;
@@ -114,7 +118,7 @@
   left: 1622px;
   top: 635px;
 }
-.div .div4 {
+.briefscreen .briefdiv4 {
   color: #ffffff;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -130,7 +134,7 @@
   align-items: center;
   justify-content: center;
 }
-.div .div5 {
+.briefscreen .briefdiv5 {
   color: #ffffff;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -140,13 +144,13 @@
   position: absolute;
   left: 162px;
   top: 129px;
-  width: 192px;
+  width: 250px;
   height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.div .navbar {
+.briefscreen .briefnavbar {
   padding: 30px 162px 30px 162px;
   display: flex;
   flex-direction: row;
@@ -156,14 +160,15 @@
   position: absolute;
   left: calc(50% - 961px);
   top: 0px;
+  box-sizing: border-box;          /* padding과 border를 너비에 포함하도록 설정 */
 }
-.div .logo {
+.briefscreen .brieflogo {
   flex-shrink: 0;
   width: 199px;
   height: 60px;
   position: relative;
 }
-.div .vector {
+.briefscreen .briefvector {
   width: 30.15%;
   height: 100%;
   position: absolute;
@@ -172,7 +177,7 @@
   bottom: 0%;
   top: 0%;
 }
-.div .vector2 {
+.briefscreen .briefvector2 {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -182,7 +187,7 @@
   top: 0%;
   overflow: visible;
 }
-.div .icon {
+.briefscreen .brieficon {
   width: 33.92%;
   height: 33.92%;
   position: absolute;
@@ -192,7 +197,7 @@
   top: 33.15%;
   overflow: visible;
 }
-.div .stream-vibe {
+.briefscreen .briefstream-vibe {
   width: 68.34%;
   height: 33.33%;
   position: absolute;
@@ -202,7 +207,7 @@
   top: 33.33%;
   overflow: visible;
 }
-.div .buttons-container {
+.briefscreen .briefbuttons-container {
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -213,7 +218,7 @@
   height: 60px;
   position: relative;
 }
-.div .div6 {
+.briefscreen .briefdiv6 {
   color: #ffffff;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -227,7 +232,7 @@
   align-items: center;
   justify-content: center;
 }
-.div .div7 {
+.briefscreen .briefdiv7 {
   color: #ffffff;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -241,7 +246,7 @@
   align-items: center;
   justify-content: center;
 }
-.div .div8 {
+.briefscreen .briefdiv8 {
   color: #ffffff;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -257,7 +262,7 @@
   align-items: center;
   justify-content: center;
 }
-.div .frame-6 {
+.briefscreen .briefframe-6 {
   display: flex;
   flex-direction: row;
   gap: 15px;
@@ -267,35 +272,35 @@
   left: 1030px;
   top: 256px;
 }
-.div .heroicons-solid-star {
+.briefscreen .briefheroicons-solid-star {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
   position: relative;
   overflow: visible;
 }
-.div .heroicons-solid-star2 {
+.briefscreen .briefheroicons-solid-star2 {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
   position: relative;
   overflow: visible;
 }
-.div .heroicons-outline-star {
+.briefscreen .briefheroicons-outline-star {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
   position: relative;
   overflow: visible;
 }
-.div .heroicons-outline-star2 {
+.briefscreen .briefheroicons-outline-star2 {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
   position: relative;
   overflow: visible;
 }
-.div .heroicons-outline-star3 {
+.briefscreen .briefheroicons-outline-star3 {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
