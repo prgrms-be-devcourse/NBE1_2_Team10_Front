@@ -1,3 +1,20 @@
+import image0  from './public/image0.png'
+import image1  from './public/image1.png'
+import image2  from './public/image2.png'
+import image3  from './public/image3.png'
+import image4  from './public/image4.png'
+import image5  from './public/image5.png'
+import image6  from './public/image6.png'
+import image7  from './public/image7.png'
+import image8  from './public/image8.png'
+import image9  from './public/image9.png'
+import image10  from './public/image10.png'
+import image11  from './public/image11.png'
+import image12  from './public/image12.png'
+import image13  from './public/image13.png'
+import image14  from './public/image14.png'
+import image15  from './public/image15.png'
+
 import "./Signup.css";
 import React, {useState} from 'react';
 import axios from 'axios';
@@ -13,8 +30,6 @@ export const Signup = () => {
     const navigate = useNavigate(); // 페이지 이동을 위한 useNavigate 훅
 
     const handleSignUp = async () => {
-        console.log("test");
-        console.log(email);
         try {
             // 백엔드 서버에 데이터 전송
             await axios.post('/users/signup', {
@@ -121,28 +136,28 @@ export const Signup = () => {
                             <div className="signupsub-container3">
                                 <div className="signupcontainer5">
                                     <div className="signupimage-container">
-                                        <img className="signupimage" src="image0.png"/>
-                                        <img className="signupimage" src="image1.png"/>
-                                        <img className="signupimage" src="image2.png"/>
-                                        <img className="signupimage" src="image3.png"/>
+                                        <img className="signupimage" src={image0}/>
+                                        <img className="signupimage" src={image1}/>
+                                        <img className="signupimage" src={image2}/>
+                                        <img className="signupimage" src={image3}/>
                                     </div>
                                     <div className="signupimage-container">
-                                        <img className="signupimage" src="image4.png"/>
-                                        <img className="signupimage" src="image5.png"/>
-                                        <img className="signupimage" src="image6.png"/>
-                                        <img className="signupimage" src="image7.png"/>
+                                        <img className="signupimage" src={image4}/>
+                                        <img className="signupimage" src={image5}/>
+                                        <img className="signupimage" src={image6}/>
+                                        <img className="signupimage" src={image7}/>
                                     </div>
                                     <div className="signupimage-container">
-                                        <img className="signupimage" src="image8.png"/>
-                                        <img className="signupimage" src="image9.png"/>
-                                        <img className="signupimage" src="image10.png"/>
-                                        <img className="signupimage" src="image11.png"/>
+                                        <img className="signupimage" src={image8}/>
+                                        <img className="signupimage" src={image9}/>
+                                        <img className="signupimage" src={image10}/>
+                                        <img className="signupimage" src={image11}/>
                                     </div>
                                     <div className="signupimage-container">
-                                        <img className="signupimage" src="image12.png"/>
-                                        <img className="signupimage" src="image13.png"/>
-                                        <img className="signupimage" src="image14.png"/>
-                                        <img className="signupimage" src="image15.png"/>
+                                        <img className="signupimage" src={image12}/>
+                                        <img className="signupimage" src={image13}/>
+                                        <img className="signupimage" src={image14}/>
+                                        <img className="signupimage" src={image15}/>
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +196,7 @@ export const Signup = () => {
                                         <input
                                             type="password"
                                             className="signuptext2"
-                                            placeholder="Enter your Password"
+                                            placeholder="Enter your Password (ex : abcd123!)"
                                             value={password} // 입력 값 바인딩
                                             onChange={(e) => setPassword(e.target.value)} // 상태 업데이트
                                         />
@@ -208,7 +223,7 @@ export const Signup = () => {
                                     <input
                                         type="text"
                                         className="signuptext2"
-                                        placeholder="Enter your Phone Number"
+                                        placeholder="Enter your Phone Number (ex : 010-0000-0000)"
                                         value={phoneNumber} // 입력 값 바인딩
                                         onChange={(e) => setPhoneNumber(e.target.value)} // 상태 업데이트
                                     />
