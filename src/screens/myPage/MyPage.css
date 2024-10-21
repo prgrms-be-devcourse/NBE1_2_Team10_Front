@@ -1,14 +1,18 @@
-.div,
-.div * {
-  box-sizing: border-box;
+.mypagescreen {
+  background-color: #141414; /* 배경색을 짙은 회색(#141414)으로 설정합니다. */
+  display: flex; /* 이 요소를 Flexbox 레이아웃으로 설정하여 자식 요소들을 유연하게 배치합니다. */
+  flex-direction: row; /* 자식 요소들을 수평 방향(가로)으로 배치합니다. */
+  justify-content: center; /* 자식 요소들을 수평으로 중앙에 정렬합니다. */
+  width: 100%; /* 이 요소의 너비를 부모 요소의 100%로 설정합니다. */
 }
-.div {
-  background: #141414;
-  height: 2278px;
-  position: relative;
-  overflow: hidden;
+.mypagescreen .mypagediv {
+  background-color: #141414; /* 배경색을 어두운 회색(#141414)으로 설정 */
+  height: 2278px;            /* 요소의 높이를 4182px로 설정 */
+  overflow: hidden;          /* 요소의 내용이 넘칠 경우 보이지 않도록 설정 */
+  position: relative;        /* 자식 요소의 절대 위치를 기준으로 설정 */
+  width: 1920px;             /* 요소의 너비를 1900px로 설정 */
 }
-.div .footer {
+.mypagescreen .mypagefooter {
   background: #0f0f0f;
   padding: 100px 162px 50px 162px;
   display: flex;
@@ -21,7 +25,7 @@
   left: 0px;
   bottom: 0px;
 }
-.div .container {
+.mypagescreen .mypagecontainer {
   display: flex;
   flex-direction: row;
   gap: 30px;
@@ -31,7 +35,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .sub-container {
+.mypagescreen .mypagesub-container {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -40,7 +44,7 @@
   flex: 1;
   position: relative;
 }
-.div .heading {
+.mypagescreen .mypageheading {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -50,7 +54,7 @@
   position: relative;
   align-self: stretch;
 }
-.div .links-container {
+.mypagescreen .mypagelinks-container {
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -60,7 +64,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .text-button {
+.mypagescreen .mypagetext-button {
   color: #999999;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -70,7 +74,7 @@
   position: relative;
   align-self: stretch;
 }
-.div .links-container2 {
+.mypagescreen .mypagelinks-container2 {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -79,7 +83,7 @@
   flex: 1;
   position: relative;
 }
-.div .buttons-container {
+.mypagescreen .mypagebuttons-container {
   display: flex;
   flex-direction: row;
   gap: 14px;
@@ -88,7 +92,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .button {
+.mypagescreen .mypagebutton {
   background: #1a1a1a;
   border-radius: 8px;
   border-style: solid;
@@ -103,28 +107,28 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .icon {
+.mypagescreen .mypageicon {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
   position: relative;
   overflow: visible;
 }
-.div .icon2 {
+.mypagescreen .mypageicon2 {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
   position: relative;
   overflow: visible;
 }
-.div .icon3 {
+.mypagescreen .mypageicon3 {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
   position: relative;
   overflow: visible;
 }
-.div .container2 {
+.mypagescreen .mypagecontainer2 {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -134,7 +138,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .line {
+.mypagescreen .mypageline {
   margin-top: -1px;
   border-style: solid;
   border-color: #262626;
@@ -144,7 +148,7 @@
   height: 0px;
   position: relative;
 }
-.div .container3 {
+.mypagescreen .mypagecontainer3 {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -153,7 +157,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .text {
+.mypagescreen .mypagetext {
   color: #999999;
   text-align: left;
   font-family: "Manrope-Regular", sans-serif;
@@ -162,7 +166,7 @@
   font-weight: 400;
   position: relative;
 }
-.div .buttons-container2 {
+.mypagescreen .mypagebuttons-container2 {
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -171,7 +175,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .text-container {
+.mypagescreen .mypagetext-container {
   color: #999999;
   text-align: left;
   font-family: "Manrope-Regular", sans-serif;
@@ -180,7 +184,7 @@
   font-weight: 400;
   position: relative;
 }
-.div .line2 {
+.mypagescreen .mypageline2 {
   margin-top: -1px;
   border-style: solid;
   border-color: #262626;
@@ -192,7 +196,7 @@
   transform-origin: 0 0;
   transform: rotate(90deg) scale(1, 1);
 }
-.div .container4 {
+.mypagescreen .mypagecontainer4 {
   display: flex;
   flex-direction: row;
   gap: 80px;
@@ -204,7 +208,7 @@
   left: 162px;
   top: 179px;
 }
-.div .form {
+.mypagescreen .mypageform {
   background: #0f0f0f;
   border-radius: 12px;
   border-style: solid;
@@ -219,7 +223,7 @@
   flex: 1;
   position: relative;
 }
-.div .container5 {
+.mypagescreen .mypagecontainer5 {
   background: #e50000;
   border-radius: 5px;
   padding: 10px;
@@ -231,7 +235,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .text2 {
+.mypagescreen .mypagetext2 {
   color: #ffffff;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -245,7 +249,7 @@
   align-items: center;
   justify-content: center;
 }
-.div .items-container {
+.mypagescreen .mypageitems-container {
   display: flex;
   flex-direction: row;
   gap: 50px;
@@ -255,7 +259,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .container6 {
+.mypagescreen .mypagecontainer6 {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -264,7 +268,7 @@
   flex: 1;
   position: relative;
 }
-.div .heading2 {
+.mypagescreen .mypageheading2 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -274,7 +278,7 @@
   position: relative;
   align-self: stretch;
 }
-.div .input-field {
+.mypagescreen .mypageinput-field {
   background: #141414;
   border-radius: 8px;
   border-style: solid;
@@ -291,7 +295,7 @@
   position: relative;
   overflow: hidden;
 }
-.div .text3 {
+.mypagescreen .mypagetext3 {
   color: #999999;
   text-align: left;
   font-family: "Manrope-Regular", sans-serif;
@@ -301,7 +305,7 @@
   position: relative;
   flex: 1;
 }
-.div .input-feild {
+.mypagescreen .mypageinput-feild {
   background: #141414;
   border-radius: 8px;
   border-style: solid;
@@ -317,7 +321,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .input-field2 {
+.mypagescreen .mypageinput-field2 {
   background: #141414;
   border-radius: 8px;
   border-style: solid;
@@ -333,7 +337,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .input-feild2 {
+.mypagescreen .mypageinput-feild2 {
   display: flex;
   flex-direction: row;
   gap: 16px;
@@ -343,7 +347,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .container7 {
+.mypagescreen .mypagecontainer7 {
   background: #141414;
   border-radius: 8px;
   border-style: solid;
@@ -358,7 +362,7 @@
   flex: 1;
   position: relative;
 }
-.div .navbar {
+.mypagescreen .mypagenavbar {
   padding: 30px 162px 30px 162px;
   display: flex;
   flex-direction: row;
@@ -369,13 +373,13 @@
   left: calc(50% - 961px);
   top: 0px;
 }
-.div .logo {
+.mypagescreen .mypagelogo {
   flex-shrink: 0;
   width: 199px;
   height: 60px;
   position: relative;
 }
-.div .vector {
+.mypagescreen .mypagevector {
   width: 30.15%;
   height: 100%;
   position: absolute;
@@ -384,7 +388,7 @@
   bottom: 0%;
   top: 0%;
 }
-.div .vector2 {
+.mypagescreen .mypagevector2 {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -394,7 +398,7 @@
   top: 0%;
   overflow: visible;
 }
-.div .icon4 {
+.mypagescreen .mypageicon4 {
   width: 33.92%;
   height: 33.92%;
   position: absolute;
@@ -404,7 +408,7 @@
   top: 33.15%;
   overflow: visible;
 }
-.div .stream-vibe {
+.mypagescreen .mypagestream-vibe {
   width: 68.34%;
   height: 33.33%;
   position: absolute;
@@ -414,11 +418,11 @@
   top: 33.33%;
   overflow: visible;
 }
-.div .group-37 {
+.mypagescreen .mypagegroup-37 {
   position: absolute;
   inset: 0;
 }
-.div .container8 {
+.mypagescreen .mypagecontainer8 {
   display: flex;
   flex-direction: row;
   gap: 50px;
@@ -430,7 +434,7 @@
   left: 262px;
   top: 970px;
 }
-.div .sub-container2 {
+.mypagescreen .mypagesub-container2 {
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -441,7 +445,7 @@
   height: 450px;
   position: relative;
 }
-.div .card {
+.mypagescreen .mypagecard {
   background: #1a1a1a;
   border-radius: 12px;
   border-style: solid;
@@ -458,7 +462,7 @@
   height: 470px;
   position: relative;
 }
-.div .image {
+.mypagescreen .mypageimage {
   border-radius: 12px;
   flex-shrink: 0;
   width: 250px;
@@ -466,7 +470,7 @@
   position: relative;
   object-fit: cover;
 }
-.div .div2 {
+.mypagescreen .mypagediv2 {
   color: #ffffff;
   text-align: left;
   font-family: "Inter-Medium", sans-serif;
@@ -476,11 +480,11 @@
   width: 127.02px;
   height: 38px;
 }
-.div .group-38 {
+.mypagescreen .mypagegroup-38 {
   position: absolute;
   inset: 0;
 }
-.div .container9 {
+.mypagescreen .mypagecontainer9 {
   display: flex;
   flex-direction: row;
   gap: 50px;
@@ -492,11 +496,11 @@
   left: 1324px;
   top: 970px;
 }
-.div .group-39 {
+.mypagescreen .mypagegroup-39 {
   position: absolute;
   inset: 0;
 }
-.div .container10 {
+.mypagescreen .mypagecontainer10 {
   display: flex;
   flex-direction: row;
   gap: 50px;
@@ -508,11 +512,11 @@
   left: 970px;
   top: 967px;
 }
-.div .group-40 {
+.mypagescreen .mypagegroup-40 {
   position: absolute;
   inset: 0;
 }
-.div .container11 {
+.mypagescreen .mypagecontainer11 {
   display: flex;
   flex-direction: row;
   gap: 50px;
@@ -524,7 +528,7 @@
   left: 616px;
   top: 970px;
 }
-.div .frame-9 {
+.mypagescreen .mypageframe-9 {
   display: flex;
   flex-direction: row;
   gap: 32px;
@@ -534,13 +538,13 @@
   left: 515px;
   top: 1525px;
 }
-.div .group-15 {
+.mypagescreen .mypagegroup-15 {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
   position: static;
 }
-.div .rectangle-518 {
+.mypagescreen .mypagerectangle-518 {
   background: #d9d9d9;
   width: 40px;
   height: 40px;
@@ -548,7 +552,7 @@
   left: 0px;
   top: 0px;
 }
-.div .div3 {
+.mypagescreen .mypagediv3 {
   color: #1e1e1e;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -564,7 +568,7 @@
   align-items: center;
   justify-content: center;
 }
-.div .rectangle-5182 {
+.mypagescreen .mypagerectangle-5182 {
   background: #d9d9d9;
   width: 40px;
   height: 40px;
@@ -572,7 +576,7 @@
   left: 72px;
   top: 0px;
 }
-.div ._1 {
+.mypagescreen .mypage_1 {
   color: #1e1e1e;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -588,13 +592,13 @@
   align-items: center;
   justify-content: center;
 }
-.div .group-14 {
+.mypagescreen .mypagegroup-14 {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
   position: static;
 }
-.div .rectangle-5183 {
+.mypagescreen .mypagerectangle-5183 {
   background: #d9d9d9;
   width: 40px;
   height: 40px;
@@ -602,7 +606,7 @@
   left: 144px;
   top: 0px;
 }
-.div ._2 {
+.mypagescreen .mypage_2 {
   color: #1e1e1e;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -618,13 +622,13 @@
   align-items: center;
   justify-content: center;
 }
-.div .group-17 {
+.mypagescreen .mypagegroup-17 {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
   position: static;
 }
-.div .rectangle-5184 {
+.mypagescreen .mypagerectangle-5184 {
   background: #d9d9d9;
   width: 40px;
   height: 40px;
@@ -632,7 +636,7 @@
   left: 216px;
   top: 0px;
 }
-.div ._3 {
+.mypagescreen .mypage_3 {
   color: #1e1e1e;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -648,13 +652,13 @@
   align-items: center;
   justify-content: center;
 }
-.div .group-23 {
+.mypagescreen .mypagegroup-23 {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
   position: static;
 }
-.div .rectangle-5185 {
+.mypagescreen .mypagerectangle-5185 {
   background: #d9d9d9;
   width: 40px;
   height: 40px;
@@ -662,7 +666,7 @@
   left: 288px;
   top: 0px;
 }
-.div ._4 {
+.mypagescreen .mypage_4 {
   color: #1e1e1e;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -678,13 +682,13 @@
   align-items: center;
   justify-content: center;
 }
-.div .group-22 {
+.mypagescreen .mypagegroup-22 {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
   position: static;
 }
-.div .rectangle-5186 {
+.mypagescreen .mypagerectangle-5186 {
   background: #d9d9d9;
   width: 40px;
   height: 40px;
@@ -692,7 +696,7 @@
   left: 360px;
   top: 0px;
 }
-.div ._5 {
+.mypagescreen .mypage_5 {
   color: #1e1e1e;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -708,13 +712,13 @@
   align-items: center;
   justify-content: center;
 }
-.div .group-21 {
+.mypagescreen .mypagegroup-21 {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
   position: static;
 }
-.div .rectangle-5187 {
+.mypagescreen .mypagerectangle-5187 {
   background: #d9d9d9;
   width: 40px;
   height: 40px;
@@ -722,7 +726,7 @@
   left: 432px;
   top: 0px;
 }
-.div ._6 {
+.mypagescreen .mypage_6 {
   color: #1e1e1e;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -738,13 +742,13 @@
   align-items: center;
   justify-content: center;
 }
-.div .group-20 {
+.mypagescreen .mypagegroup-20 {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
   position: static;
 }
-.div .rectangle-5188 {
+.mypagescreen .mypagerectangle-5188 {
   background: #d9d9d9;
   width: 40px;
   height: 40px;
@@ -752,7 +756,7 @@
   left: 504px;
   top: 0px;
 }
-.div ._7 {
+.mypagescreen .mypage_7 {
   color: #1e1e1e;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -768,13 +772,13 @@
   align-items: center;
   justify-content: center;
 }
-.div .group-24 {
+.mypagescreen .mypagegroup-24 {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
   position: static;
 }
-.div .rectangle-5189 {
+.mypagescreen .mypagerectangle-5189 {
   background: #d9d9d9;
   width: 40px;
   height: 40px;
@@ -782,7 +786,7 @@
   left: 576px;
   top: 0px;
 }
-.div ._8 {
+.mypagescreen .mypage_8 {
   color: #1e1e1e;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -798,13 +802,13 @@
   align-items: center;
   justify-content: center;
 }
-.div .group-19 {
+.mypagescreen .mypagegroup-19 {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
   position: static;
 }
-.div .rectangle-51810 {
+.mypagescreen .mypagerectangle-51810 {
   background: #d9d9d9;
   width: 40px;
   height: 40px;
@@ -812,7 +816,7 @@
   left: 648px;
   top: 0px;
 }
-.div ._9 {
+.mypagescreen .mypage_9 {
   color: #1e1e1e;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -828,13 +832,13 @@
   align-items: center;
   justify-content: center;
 }
-.div .group-18 {
+.mypagescreen .mypagegroup-18 {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
   position: static;
 }
-.div .rectangle-51811 {
+.mypagescreen .mypagerectangle-51811 {
   background: #d9d9d9;
   width: 40px;
   height: 40px;
@@ -842,7 +846,7 @@
   left: 720px;
   top: 0px;
 }
-.div ._10 {
+.mypagescreen .mypage_10 {
   color: #1e1e1e;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -858,13 +862,13 @@
   align-items: center;
   justify-content: center;
 }
-.div .group-25 {
+.mypagescreen .mypagegroup-25 {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
   position: static;
 }
-.div .rectangle-51812 {
+.mypagescreen .mypagerectangle-51812 {
   background: #d9d9d9;
   width: 40px;
   height: 40px;
@@ -872,7 +876,7 @@
   left: 792px;
   top: 0px;
 }
-.div .div4 {
+.mypagescreen .mypagediv4 {
   color: #1e1e1e;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;

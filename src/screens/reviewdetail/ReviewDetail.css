@@ -1,14 +1,18 @@
-.div,
-.div * {
-  box-sizing: border-box;
+.reviewdetailscreen {
+  background-color: #141414; /* 배경색을 짙은 회색(#141414)으로 설정합니다. */
+  display: flex; /* 이 요소를 Flexbox 레이아웃으로 설정하여 자식 요소들을 유연하게 배치합니다. */
+  flex-direction: row; /* 자식 요소들을 수평 방향(가로)으로 배치합니다. */
+  justify-content: center; /* 자식 요소들을 수평으로 중앙에 정렬합니다. */
+  width: 100%; /* 이 요소의 너비를 부모 요소의 100%로 설정합니다. */
 }
-.div {
-  background: #141414;
-  height: 2787px;
-  position: relative;
-  overflow: hidden;
+.reviewdetailscreen .reviewdetaildiv {
+  background-color: #141414; /* 배경색을 어두운 회색(#141414)으로 설정 */
+  height: 2787px;            /* 요소의 높이를 4182px로 설정 */
+  overflow: hidden;          /* 요소의 내용이 넘칠 경우 보이지 않도록 설정 */
+  position: relative;        /* 자식 요소의 절대 위치를 기준으로 설정 */
+  width: 1920px;             /* 요소의 너비를 1900px로 설정 */
 }
-.div .sub-container {
+.reviewdetailscreen .reviewdetailsub-container {
   display: flex;
   flex-direction: row;
   gap: 14px;
@@ -20,7 +24,7 @@
   left: 162px;
   top: 911px;
 }
-.div .heading {
+.reviewdetailscreen .reviewdetailheading {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -31,11 +35,11 @@
   flex: 1;
   height: 56px;
 }
-.div .group-4 {
+.reviewdetailscreen .reviewdetailgroup-4 {
   position: absolute;
   inset: 0;
 }
-.div .rectangle-513 {
+.reviewdetailscreen .reviewdetailrectangle-513 {
   width: 1596px;
   height: 479px;
   position: absolute;
@@ -43,7 +47,7 @@
   top: 340px;
   overflow: visible;
 }
-.div .div2 {
+.reviewdetailscreen .reviewdetaildiv2 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -56,7 +60,7 @@
   width: 1596px;
   height: 479px;
 }
-.div .div3 {
+.reviewdetailscreen .reviewdetaildiv3 {
   color: #ffffff;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -72,7 +76,7 @@
   align-items: center;
   justify-content: center;
 }
-.div .navbar {
+.reviewdetailscreen .reviewdetailnavbar {
   padding: 30px 162px 30px 162px;
   display: flex;
   flex-direction: row;
@@ -82,14 +86,15 @@
   position: absolute;
   left: calc(50% - 961px);
   top: 0px;
+  box-sizing: border-box;          /* padding과 border를 너비에 포함하도록 설정 */
 }
-.div .logo {
+.reviewdetailscreen .reviewdetaillogo {
   flex-shrink: 0;
   width: 199px;
   height: 60px;
   position: relative;
 }
-.div .vector {
+.reviewdetailscreen .reviewdetailvector {
   width: 30.15%;
   height: 100%;
   position: absolute;
@@ -98,7 +103,7 @@
   bottom: 0%;
   top: 0%;
 }
-.div .vector2 {
+.reviewdetailscreen .reviewdetailvector2 {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -108,7 +113,7 @@
   top: 0%;
   overflow: visible;
 }
-.div .icon {
+.reviewdetailscreen .reviewdetailicon {
   width: 33.92%;
   height: 33.92%;
   position: absolute;
@@ -118,7 +123,7 @@
   top: 33.15%;
   overflow: visible;
 }
-.div .stream-vibe {
+.reviewdetailscreen .reviewdetailstream-vibe {
   width: 68.34%;
   height: 33.33%;
   position: absolute;
@@ -128,7 +133,7 @@
   top: 33.33%;
   overflow: visible;
 }
-.div .buttons-container {
+.reviewdetailscreen .reviewdetailbuttons-container {
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -139,7 +144,7 @@
   height: 60px;
   position: relative;
 }
-.div .div4 {
+.reviewdetailscreen .reviewdetaildiv4 {
   color: #ffffff;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -153,7 +158,7 @@
   align-items: center;
   justify-content: center;
 }
-.div .div5 {
+.reviewdetailscreen .reviewdetaildiv5 {
   color: #ffffff;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -167,7 +172,7 @@
   align-items: center;
   justify-content: center;
 }
-.div .footer {
+.reviewdetailscreen .reviewdetailfooter {
   background: #0f0f0f;
   padding: 100px 162px 50px 162px;
   display: flex;
@@ -180,7 +185,7 @@
   left: -1px;
   top: 2282px;
 }
-.div .container {
+.reviewdetailscreen .reviewdetailcontainer {
   display: flex;
   flex-direction: row;
   gap: 30px;
@@ -190,7 +195,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .sub-container2 {
+.reviewdetailscreen .reviewdetailsub-container2 {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -199,7 +204,7 @@
   flex: 1;
   position: relative;
 }
-.div .heading2 {
+.reviewdetailscreen .reviewdetailheading2 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -209,7 +214,7 @@
   position: relative;
   align-self: stretch;
 }
-.div .links-container {
+.reviewdetailscreen .reviewdetaillinks-container {
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -219,7 +224,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .text-button {
+.reviewdetailscreen .reviewdetailtext-button {
   color: #999999;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -229,7 +234,7 @@
   position: relative;
   align-self: stretch;
 }
-.div .links-container2 {
+.reviewdetailscreen .reviewdetaillinks-container2 {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -238,7 +243,7 @@
   flex: 1;
   position: relative;
 }
-.div .buttons-container2 {
+.reviewdetailscreen .reviewdetailbuttons-container2 {
   display: flex;
   flex-direction: row;
   gap: 14px;
@@ -247,7 +252,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .button {
+.reviewdetailscreen .reviewdetailbutton {
   background: #1a1a1a;
   border-radius: 8px;
   border-style: solid;
@@ -262,28 +267,28 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .icon2 {
+.reviewdetailscreen .reviewdetailicon2 {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
   position: relative;
   overflow: visible;
 }
-.div .icon3 {
+.reviewdetailscreen .reviewdetailicon3 {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
   position: relative;
   overflow: visible;
 }
-.div .icon4 {
+.reviewdetailscreen .reviewdetailicon4 {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
   position: relative;
   overflow: visible;
 }
-.div .container2 {
+.reviewdetailscreen .reviewdetailcontainer2 {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -293,7 +298,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .line {
+.reviewdetailscreen .reviewdetailline {
   margin-top: -1px;
   border-style: solid;
   border-color: #262626;
@@ -303,7 +308,7 @@
   height: 0px;
   position: relative;
 }
-.div .container3 {
+.reviewdetailscreen .reviewdetailcontainer3 {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -312,7 +317,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .text {
+.reviewdetailscreen .reviewdetailtext {
   color: #999999;
   text-align: left;
   font-family: "Manrope-Regular", sans-serif;
@@ -321,7 +326,7 @@
   font-weight: 400;
   position: relative;
 }
-.div .buttons-container3 {
+.reviewdetailscreen .reviewdetailbuttons-container3 {
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -330,7 +335,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.div .text-container {
+.reviewdetailscreen .reviewdetailtext-container {
   color: #999999;
   text-align: left;
   font-family: "Manrope-Regular", sans-serif;
@@ -339,7 +344,7 @@
   font-weight: 400;
   position: relative;
 }
-.div .line2 {
+.reviewdetailscreen .reviewdetailline2 {
   margin-top: -1px;
   border-style: solid;
   border-color: #262626;
@@ -351,11 +356,11 @@
   transform-origin: 0 0;
   transform: rotate(90deg) scale(1, 1);
 }
-.div .group-41 {
+.reviewdetailscreen .reviewdetailgroup-41 {
   position: absolute;
   inset: 0;
 }
-.div .rectangle-517 {
+.reviewdetailscreen .reviewdetailrectangle-517 {
   border-style: solid;
   border-color: #ffffff;
   border-width: 1px;
@@ -365,7 +370,7 @@
   left: 161px;
   top: 1259.81px;
 }
-.div .div6 {
+.reviewdetailscreen .reviewdetaildiv6 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -381,7 +386,7 @@
   align-items: center;
   justify-content: flex-start;
 }
-.div .text2 {
+.reviewdetailscreen .reviewdetailtext2 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -394,7 +399,7 @@
   width: 103px;
   height: 27.05px;
 }
-.div .text3 {
+.reviewdetailscreen .reviewdetailtext3 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -407,7 +412,7 @@
   width: 86px;
   height: 22.22px;
 }
-.div .heroicons-solid-hand-thumb-up {
+.reviewdetailscreen .reviewdetailheroicons-solid-hand-thumb-up {
   width: 24px;
   height: 23.18px;
   position: absolute;
@@ -415,7 +420,7 @@
   top: 1320.66px;
   overflow: visible;
 }
-.div .text4 {
+.reviewdetailscreen .reviewdetailtext4 {
   color: #ffffff;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -428,7 +433,7 @@
   width: 30px;
   height: 20.28px;
 }
-.div .text5 {
+.reviewdetailscreen .reviewdetailtext5 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -441,11 +446,11 @@
   width: 28px;
   height: 22.22px;
 }
-.div .group-42 {
+.reviewdetailscreen .reviewdetailgroup-42 {
   position: absolute;
   inset: 0;
 }
-.div .rectangle-5172 {
+.reviewdetailscreen .reviewdetailrectangle-5172 {
   border-style: solid;
   border-color: #ffffff;
   border-width: 1px;
@@ -455,7 +460,7 @@
   left: 163px;
   top: 1647px;
 }
-.div .div7 {
+.reviewdetailscreen .reviewdetaildiv7 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -471,7 +476,7 @@
   align-items: center;
   justify-content: flex-start;
 }
-.div .text6 {
+.reviewdetailscreen .reviewdetailtext6 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -482,7 +487,7 @@
   left: 163px;
   top: 1612px;
 }
-.div .text7 {
+.reviewdetailscreen .reviewdetailtext7 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -493,7 +498,7 @@
   left: 278px;
   top: 1616px;
 }
-.div .heroicons-solid-hand-thumb-up2 {
+.reviewdetailscreen .reviewdetailheroicons-solid-hand-thumb-up2 {
   width: 24px;
   height: 24px;
   position: absolute;
@@ -501,7 +506,7 @@
   top: 1710px;
   overflow: visible;
 }
-.div .text8 {
+.reviewdetailscreen .reviewdetailtext8 {
   color: #ffffff;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -513,7 +518,7 @@
   top: 1713px;
   width: 30px;
 }
-.div .text9 {
+.reviewdetailscreen .reviewdetailtext9 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -524,7 +529,7 @@
   left: 250px;
   top: 1713px;
 }
-.div .heroicons-mini-chevron-up {
+.reviewdetailscreen .reviewdetailheroicons-mini-chevron-up {
   width: 20px;
   height: 20px;
   position: absolute;
@@ -532,11 +537,11 @@
   top: 1716px;
   overflow: visible;
 }
-.div .group-44 {
+.reviewdetailscreen .reviewdetailgroup-44 {
   position: absolute;
   inset: 0;
 }
-.div .rectangle-5173 {
+.reviewdetailscreen .reviewdetailrectangle-5173 {
   border-style: solid;
   border-color: #ffffff;
   border-width: 1px;
@@ -546,7 +551,7 @@
   left: 229px;
   top: 1903px;
 }
-.div .div8 {
+.reviewdetailscreen .reviewdetaildiv8 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -562,7 +567,7 @@
   align-items: center;
   justify-content: flex-start;
 }
-.div .text10 {
+.reviewdetailscreen .reviewdetailtext10 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -574,7 +579,7 @@
   top: 1868px;
   width: 103.65px;
 }
-.div .text11 {
+.reviewdetailscreen .reviewdetailtext11 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -586,7 +591,7 @@
   top: 1872px;
   width: 86.54px;
 }
-.div .heroicons-solid-hand-thumb-up3 {
+.reviewdetailscreen .reviewdetailheroicons-solid-hand-thumb-up3 {
   width: 24.15px;
   height: 24px;
   position: absolute;
@@ -594,7 +599,7 @@
   top: 1966px;
   overflow: visible;
 }
-.div .text12 {
+.reviewdetailscreen .reviewdetailtext12 {
   color: #ffffff;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -606,11 +611,11 @@
   top: 1969px;
   width: 30.19px;
 }
-.div .group-43 {
+.reviewdetailscreen .reviewdetailgroup-43 {
   position: absolute;
   inset: 0;
 }
-.div .rectangle-5174 {
+.reviewdetailscreen .reviewdetailrectangle-5174 {
   border-style: solid;
   border-color: #ffffff;
   border-width: 1px;
@@ -620,7 +625,7 @@
   left: 161px;
   top: 1454px;
 }
-.div .div9 {
+.reviewdetailscreen .reviewdetaildiv9 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -636,7 +641,7 @@
   align-items: center;
   justify-content: flex-start;
 }
-.div .text13 {
+.reviewdetailscreen .reviewdetailtext13 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -647,7 +652,7 @@
   left: 161px;
   top: 1419px;
 }
-.div .text14 {
+.reviewdetailscreen .reviewdetailtext14 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -658,7 +663,7 @@
   left: 276px;
   top: 1423px;
 }
-.div .heroicons-solid-hand-thumb-up4 {
+.reviewdetailscreen .reviewdetailheroicons-solid-hand-thumb-up4 {
   width: 24px;
   height: 24px;
   position: absolute;
@@ -666,7 +671,7 @@
   top: 1517px;
   overflow: visible;
 }
-.div .text15 {
+.reviewdetailscreen .reviewdetailtext15 {
   color: #ffffff;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -678,7 +683,7 @@
   top: 1520px;
   width: 30px;
 }
-.div .text16 {
+.reviewdetailscreen .reviewdetailtext16 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -689,7 +694,7 @@
   left: 248px;
   top: 1520px;
 }
-.div .heroicons-mini-chevron-down {
+.reviewdetailscreen .reviewdetailheroicons-mini-chevron-down {
   width: 20px;
   height: 20px;
   position: absolute;
@@ -697,11 +702,11 @@
   top: 1522px;
   overflow: visible;
 }
-.div .group-45 {
+.reviewdetailscreen .reviewdetailgroup-45 {
   position: absolute;
   inset: 0;
 }
-.div .line-8 {
+.reviewdetailscreen .reviewdetailline-8 {
   margin-top: -1px;
   border-style: solid;
   border-color: #ffffff;
@@ -714,12 +719,12 @@
   transform-origin: 0 0;
   transform: rotate(0deg) scale(1, 1);
 }
-.div .group-6 {
+.reviewdetailscreen .reviewdetailgroup-6 {
   width: 86px;
   height: 42px;
   position: static;
 }
-.div .rectangle-514 {
+.reviewdetailscreen .reviewdetailrectangle-514 {
   background: #00ff37;
   width: 86px;
   height: 42px;
@@ -727,7 +732,7 @@
   left: 1672px;
   top: 1028px;
 }
-.div .div10 {
+.reviewdetailscreen .reviewdetaildiv10 {
   color: #ffffff;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -743,7 +748,7 @@
   align-items: center;
   justify-content: center;
 }
-.div .text17 {
+.reviewdetailscreen .reviewdetailtext17 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -754,7 +759,7 @@
   left: 346px;
   top: 1026px;
 }
-.div .text18 {
+.reviewdetailscreen .reviewdetailtext18 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -765,11 +770,11 @@
   left: 171px;
   top: 1024px;
 }
-.div .group-46 {
+.reviewdetailscreen .reviewdetailgroup-46 {
   position: absolute;
   inset: 0;
 }
-.div .line-82 {
+.reviewdetailscreen .reviewdetailline-82 {
   margin-top: -1px;
   border-style: solid;
   border-color: #ffffff;
@@ -782,12 +787,12 @@
   transform-origin: 0 0;
   transform: rotate(0deg) scale(1, 1);
 }
-.div .group-62 {
+.reviewdetailscreen .reviewdetailgroup-62 {
   width: 81.31px;
   height: 42px;
   position: static;
 }
-.div .rectangle-5142 {
+.reviewdetailscreen .reviewdetailrectangle-5142 {
   background: #00ff37;
   width: 81.31px;
   height: 42px;
@@ -795,7 +800,7 @@
   left: 1677.69px;
   top: 1771px;
 }
-.div .div11 {
+.reviewdetailscreen .reviewdetaildiv11 {
   color: #ffffff;
   text-align: center;
   font-family: "Manrope-SemiBold", sans-serif;
@@ -811,7 +816,7 @@
   align-items: center;
   justify-content: center;
 }
-.div .text19 {
+.reviewdetailscreen .reviewdetailtext19 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -823,7 +828,7 @@
   top: 1769px;
   width: 110px;
 }
-.div .text20 {
+.reviewdetailscreen .reviewdetailtext20 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
