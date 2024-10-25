@@ -14,10 +14,23 @@ export const MyPage = ({className, ...props}) => {
     // 상태 관리: 각 입력 필드의 값을 상태로 저장
     const [nickname, setNickname] = useState('');
     const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [number, setNumber] = useState('');
+    const [email, setEmail] = useState('');
+    const [token, setToken] = useState(null);
 
     const navigate = useNavigate(); // 페이지 이동을 위한 navigate 사용
+
+    useEffect(() => {
+
+        const accessToken = localStorage.getItem('accessToken');
+        if (accessToken) {
+            // accessToken을 상태로 저장
+            setToken(accessToken);
+        }
+
+        console.log(accessToken);
+    }, []);  // 컴포넌트가 처음 렌더링될 때 한 번만 실행
 
     // 메인 화면으로 이동
     const handleLogoClick = () => {
@@ -27,17 +40,19 @@ export const MyPage = ({className, ...props}) => {
     // 회원 정보 수정 요청
     const handleUpdateClick = async () => {
         const userData = {
-            alias : nickname,
-            userName : name,
-            userEmail : email,
-            phoneNum : number
+            userEmail: email,
+            userPw: password,
+            userName: name,
+            alias: nickname,
+            phoneNum: number
         };
 
         try {
             const response = await fetch('users/update', {
-                method: 'POST',
+                method: 'PATCH', // 요청 타입 명시
                 headers: {
                     'Content-Type': 'application/json',
+                    'accessToken': token // accessToken 추가
                 },
                 body: JSON.stringify(userData),
             });
@@ -46,7 +61,7 @@ export const MyPage = ({className, ...props}) => {
                 const result = await response.json();
                 console.log('User info updated successfully:', result);
 
-                // 데이터 전송 후 다른 페이지로 이동 (예: "/success" 페이지)
+                // 데이터 전송 후 다른 페이지로 이동
                 navigate('/'); // 페이지 이동
             } else {
                 console.error('Failed to update user info.');
@@ -218,10 +233,23 @@ export const MyPage = ({className, ...props}) => {
                         </div>
                         <div className="mypageitems-container">
                             <div className="mypagecontainer6">
+                                <div className="mypageheading2">이메일</div>
+                                <div className="mypageinput-feild2">
+                                    <input
+                                        className="mypagecontainer7"
+                                        placeholder="인증에 필요한 기존 이메일을 입력해주세요"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="mypageitems-container">
+                            <div className="mypagecontainer6">
                                 <div className="mypageheading2">별명</div>
                                 <input
                                     className="mypageinput-field"
-                                    placeholder="Please enter your nickname"
+                                    placeholder="변경할 별명을 입력해주세요"
                                     value={nickname}
                                     onChange={(e) => setNickname(e.target.value)}
                                 />
@@ -230,7 +258,7 @@ export const MyPage = ({className, ...props}) => {
                                 <div className="mypageheading2">이름</div>
                                 <input
                                     className="mypageinput-feild"
-                                    placeholder="Please enter your name"
+                                    placeholder="변경할 이름을 입력해주세요"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                 />
@@ -239,12 +267,12 @@ export const MyPage = ({className, ...props}) => {
                         </div>
                         <div className="mypageitems-container">
                             <div className="mypagecontainer6">
-                                <div className="mypageheading2">이메일</div>
+                                <div className="mypageheading2">비밀번호</div>
                                 <input
                                     className="mypageinput-field2"
-                                    placeholder="Please enter your email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="변경할 패스워드를 입력해주세요"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
                             <div className="mypagecontainer6">
@@ -252,7 +280,7 @@ export const MyPage = ({className, ...props}) => {
                                 <div className="mypageinput-feild2">
                                     <input
                                         className="mypagecontainer7"
-                                        placeholder="Please enter your number"
+                                        placeholder="변경할 전화번호를 입력해주세요"
                                         value={number}
                                         onChange={(e) => setNumber(e.target.value)}
                                     />
