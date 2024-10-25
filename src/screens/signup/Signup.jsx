@@ -29,6 +29,11 @@ export const Signup = () => {
     const [phoneNumber, setPhoneNumber] = useState(''); // 전화번호 상태
     const navigate = useNavigate(); // 페이지 이동을 위한 useNavigate 훅
 
+    // 메인 화면으로 이동
+    const handleLogoClick = () => {
+        navigate("/");
+    };
+
     const handleSignUp = async () => {
         try {
             // 백엔드 서버에 데이터 전송
@@ -235,7 +240,7 @@ export const Signup = () => {
                         </div>
                     </div>
                     <div className="signupnavbar">
-                        <div className="signuplogo">
+                        <div className="signuplogo" onClick={handleLogoClick}>
                             <div className="signupvector">
                                 <img className="signupvector2" src="vector1.svg"/>
                                 <img className="signupicon4" src="icon3.svg"/>
