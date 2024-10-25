@@ -260,21 +260,22 @@
   align-self: stretch;
 }
 .loginscreen .logininput-field {
-  background: #141414;
-  border-radius: 8px;
-  border-style: solid;
-  border-color: #262626;
-  border-width: 1px;
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-  gap: 77px;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
+  background: #141414; /* 배경색을 어두운 색으로 설정 */
+  border-radius: 8px; /* 모서리를 둥글게 설정 */
+  border-style: solid; /* 테두리 스타일을 실선으로 설정 */
+  border-color: #262626; /* 테두리 색상 설정 */
+  border-width: 1px; /* 테두리 두께 설정 */
+  padding: 20px; /* 안쪽 여백 설정 */
+  display: flex; /* 플렉스 박스 모델 사용 */
+  flex-direction: row; /* 자식 요소를 가로 방향으로 정렬 */
+  gap: 77px; /* 자식 요소 간의 간격 설정 */
+  align-items: center; /* 자식 요소를 수직으로 중앙 정렬 */
+  justify-content: flex-start; /* 자식 요소를 왼쪽으로 정렬 */
+  align-self: stretch; /* 자신의 크기를 부모 요소에 맞게 늘림 */
+  flex-shrink: 0; /* 요소가 줄어들지 않도록 설정 */
+  position: relative; /* 자식 요소의 절대 위치를 설정할 수 있도록 함 */
+  overflow: hidden; /* 넘치는 내용 숨기기 */
+  color: white; /* 글씨 색상을 흰색으로 설정 */
 }
 .loginscreen .logintext2 {
   color: #999999;
@@ -286,22 +287,22 @@
   position: relative;
   flex: 1;
 }
-.loginscreen .logininput-field2 {
-  background: #141414;
-  border-radius: 8px;
-  border-style: solid;
-  border-color: #262626;
-  border-width: 1px;
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-  gap: 77px;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-}
+/*.loginscreen .logininput-field2 {*/
+/*  background: #141414;*/
+/*  border-radius: 8px;*/
+/*  border-style: solid;*/
+/*  border-color: #262626;*/
+/*  border-width: 1px;*/
+/*  padding: 20px;*/
+/*  display: flex;*/
+/*  flex-direction: row;*/
+/*  gap: 77px;*/
+/*  align-items: center;*/
+/*  justify-content: flex-start;*/
+/*  align-self: stretch;*/
+/*  flex-shrink: 0;*/
+/*  position: relative;*/
+/*}*/
 .loginscreen .logincontainer6 {
   background: #e50000;
   border-radius: 5px;

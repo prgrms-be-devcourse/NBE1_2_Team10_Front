@@ -1,6 +1,57 @@
 import "./Signin.css";
+import React, { useState } from 'react';
+import { useNavigate  } from 'react-router-dom';
+import axios from "axios";
 
 export const Signin = () => {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
+    // 메인 화면으로 이동
+    const handleLogoClick = () => {
+        navigate("/");
+    };
+
+    const handleLogin = async () => {
+        const data = {
+            userEmail: email,  // 원하는 키 값으로 지정
+            userPw: password,  // 원하는 키 값으로 지정
+        };
+
+        try {
+            const response = await axios.post('/users/signin', data, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            // 헤더에서 accessToken 가져오기
+            const accessToken = response.headers['accesstoken'];
+
+            console.log(accessToken); // accessToken 확인
+
+            // 로그인 성공 시 accessToken 저장
+            if (accessToken) {
+                localStorage.setItem('accessToken', accessToken); // accessToken을 localStorage에 저장
+            }
+
+            // 로그인 성공 시 다른 페이지로 이동
+            navigate('/'); // MainPage로 이동
+        } catch (error) {
+            // 에러 처리
+            if (error.response) {
+                console.error('Error:', error.response.data);
+            } else if (error.request) {
+                console.error('No response received:', error.request);
+            } else {
+                console.error('Error:', error.message);
+            }
+        }
+    };
+
+
     return (
         <div className="loginscreen">
             <div className="logindiv">
@@ -78,26 +129,34 @@ export const Signin = () => {
                         <div className="loginitems-container">
                             <div className="logincontainer5">
                                 <div className="loginheading2">이메일</div>
-                                <div className="logininput-field">
-                                    <div className="logintext2">Enter your Email</div>
-                                </div>
+                                <input
+                                    type="email"
+                                    className="logininput-field"
+                                    placeholder="Enter your Email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
                             </div>
                         </div>
                         <div className="loginitems-container">
                             <div className="logincontainer5">
                                 <div className="loginheading2">비밀번호</div>
-                                <div className="logininput-field2">
-                                    <div className="logintext2">Enter your Password</div>
-                                </div>
+                                <input
+                                    type="password"
+                                    className="logininput-field"
+                                    placeholder="Enter your Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="logincontainer6">
+                <div className="logincontainer6" onClick={handleLogin}>
                     <div className="logintext3">로그인</div>
                 </div>
                 <div className="loginnavbar">
-                    <div className="loginlogo">
+                <div className="loginlogo" onClick={handleLogoClick}>
                         <div className="loginvector">
                             <img className="loginvector2" src="vector1.svg"/>
                             <img className="loginicon4" src="icon3.svg"/>
