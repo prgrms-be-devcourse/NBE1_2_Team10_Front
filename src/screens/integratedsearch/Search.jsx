@@ -9,8 +9,8 @@ import vector1 from './public/vector1.svg'
 import "./Search.css";
 import React, {useState} from "react";
 import {useLocation} from 'react-router-dom';
-import axios from "axios"; // 전달된 데이터를 가져오기 위한 useLocation
 import { useNavigate } from 'react-router-dom';
+import axios from "axios"; // 전달된 데이터를 가져오기 위한 useLocation
 
 export const Search = ({className, ...props}) => {
 
@@ -35,7 +35,6 @@ export const Search = ({className, ...props}) => {
     const handleClick = async (index) => {
         try {
             console.log(resultData[index].movieId)
-            // 서버에 데이터 요청 (예: POST 요청으로 title 전달)
             const response = await axios.get(`/movies/${resultData[index].movieId}`);
             const movieData = response.data.result;
 
@@ -43,7 +42,7 @@ export const Search = ({className, ...props}) => {
 
             // 요청 성공 시 다른 페이지로 이동, 서버로부터 받은 데이터와 함께
             if (response.status === 200) {
-                // navigate('/detail-page', { state: { movie: movieData } });
+                navigate('/detail-page', { state: { movie: movieData } });
             }
         } catch (error) {
             console.error('Error fetching data:', error);
