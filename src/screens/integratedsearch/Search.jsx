@@ -10,8 +10,12 @@ import "./Search.css";
 import React, {useState} from "react";
 import {useLocation} from 'react-router-dom';
 import axios from "axios"; // 전달된 데이터를 가져오기 위한 useLocation
+import { useNavigate } from 'react-router-dom';
 
 export const Search = ({className, ...props}) => {
+
+    const navigate = useNavigate();
+    const accessToken = localStorage.getItem('accessToken'); // accessToken을 localStorage에서 가져옴
 
     const location = useLocation();
     const initialData = location.state ? location.state.data : {}; // navigate에서 전달된 데이터 가져오기
@@ -20,6 +24,47 @@ export const Search = ({className, ...props}) => {
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value); // 입력값 변화 시 상태 업데이트
+    };
+
+    // 메인 화면으로 이동
+    const handleLogoClick = () => {
+        navigate("/");
+    };
+
+    // 클릭 시 호출되는 함수 (해당 카드의 title을 전달)
+    const handleClick = async (index) => {
+        try {
+            console.log(resultData[index].movieId)
+            // 서버에 데이터 요청 (예: POST 요청으로 title 전달)
+            const response = await axios.get(`/movies/${resultData[index].movieId}`);
+            const movieData = response.data.result;
+
+            console.log(movieData)
+
+            // 요청 성공 시 다른 페이지로 이동, 서버로부터 받은 데이터와 함께
+            if (response.status === 200) {
+                // navigate('/detail-page', { state: { movie: movieData } });
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('accessToken'); // accessToken 삭제
+        navigate('/'); // 로그인 페이지로 이동
+    };
+
+    const handleLogin = () => {
+        navigate('/signin'); // 로그인 페이지로 이동
+    };
+
+    const handleRegister = () => {
+        navigate('/signup'); // 회원가입 페이지로 이동
+    };
+
+    const handleProfile = () => {
+        navigate('/mypage'); // 내 정보 페이지로 이동
     };
 
     const handleSearchClick = async () => {
@@ -119,7 +164,7 @@ export const Search = ({className, ...props}) => {
                     {resultData.length >= 1 && (
                     <div className="searchcontainer4">
                         <div className="searchsub-container3">
-                            <div className="searchcard">
+                            <div className="searchcard" onClick={() => handleClick(0)}>
                                 <img className="searchimage" src={resultData[0].posterUrl}/>
                             </div>
                         </div>
@@ -132,7 +177,7 @@ export const Search = ({className, ...props}) => {
                     {resultData.length >= 2 && (
                     <div className="searchcontainer4">
                         <div className="searchsub-container3">
-                            <div className="searchcard">
+                            <div className="searchcard" onClick={() => handleClick(1)}>
                                 <img className="searchimage" src={resultData[1].posterUrl}/>
                             </div>
                         </div>
@@ -145,7 +190,7 @@ export const Search = ({className, ...props}) => {
                     {resultData.length >= 3 && (
                     <div className="searchcontainer4">
                         <div className="searchsub-container3">
-                            <div className="searchcard">
+                            <div className="searchcard" onClick={() => handleClick(2)}>
                                 <img className="searchimage" src={resultData[2].posterUrl}/>
                             </div>
                         </div>
@@ -158,7 +203,7 @@ export const Search = ({className, ...props}) => {
                     {resultData.length >= 4 && (
                     <div className="searchcontainer4">
                         <div className="searchsub-container3">
-                            <div className="searchcard">
+                            <div className="searchcard" onClick={() => handleClick(3)}>
                                 <img className="searchimage" src={resultData[3].posterUrl}/>
                             </div>
                         </div>
@@ -171,7 +216,7 @@ export const Search = ({className, ...props}) => {
                     {resultData.length >= 5 && (
                     <div className="searchcontainer4">
                         <div className="searchsub-container3">
-                            <div className="searchcard">
+                            <div className="searchcard" onClick={() => handleClick(4)}>
                                 <img className="searchimage" src={resultData[4].posterUrl}/>
                             </div>
                         </div>
@@ -214,7 +259,7 @@ export const Search = ({className, ...props}) => {
                     </div>
                 </div>
                 <div className="searchnavbar">
-                    <div className="searchlogo">
+                    <div className="searchlogo" onClick={handleLogoClick}>
                         <div className="searchvector">
                             <img className="searchvector2" src={vector1}/>
                             <img className="searchicon5" src={icon4}/>
@@ -222,8 +267,25 @@ export const Search = ({className, ...props}) => {
                         <img className="searchstream-vibe" src={stream}/>
                     </div>
                     <div className="searchbuttons-container3">
-                        <div className="searchdiv2">로그인</div>
-                        <div className="searchdiv3">회원가입</div>
+                        {accessToken ? (
+                            <>
+                                <div className="searchdiv2" onClick={handleProfile}>
+                                    내 정보
+                                </div>
+                                <div className="searchdiv3" onClick={handleLogout}>
+                                    로그아웃
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div className="searchdiv2" onClick={handleLogin}>
+                                    로그인
+                                </div>
+                                <div className="searchdiv3" onClick={handleRegister}>
+                                    회원가입
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
