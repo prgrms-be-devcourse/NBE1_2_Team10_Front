@@ -279,6 +279,7 @@
   align-self: stretch;
 }
 .mypagescreen .mypageinput-field {
+  color: #FFFFFF;
   background: #141414;
   border-radius: 8px;
   border-style: solid;
@@ -306,6 +307,7 @@
   flex: 1;
 }
 .mypagescreen .mypageinput-feild {
+  color: #FFFFFF;
   background: #141414;
   border-radius: 8px;
   border-style: solid;
@@ -322,6 +324,7 @@
   position: relative;
 }
 .mypagescreen .mypageinput-field2 {
+  color: #FFFFFF;
   background: #141414;
   border-radius: 8px;
   border-style: solid;
@@ -338,6 +341,7 @@
   position: relative;
 }
 .mypagescreen .mypageinput-feild2 {
+  color: #FFFFFF;
   display: flex;
   flex-direction: row;
   gap: 16px;
