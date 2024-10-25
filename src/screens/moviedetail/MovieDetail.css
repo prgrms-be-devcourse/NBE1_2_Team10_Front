@@ -278,7 +278,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  left: -100px; /* 원하는 만큼 왼쪽으로 이동 */
 }
 .detailscreen .detaildiv3 {
   color: #ffffff;
@@ -293,7 +292,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  left: -100px; /* 원하는 만큼 왼쪽으로 이동 */
 }
 .detailscreen .detailfooter2 {
   background: #0f0f0f;
@@ -412,7 +410,7 @@
   align-items: center;
   justify-content: flex-start;
   position: absolute;
-  left: 1000px; /* 원래는 1584 */
+  left: 1584px;
   top: 3032px;
 }
 .detailscreen .detailtext2 {
