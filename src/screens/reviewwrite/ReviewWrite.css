@@ -207,6 +207,7 @@
   left: 162px;
   top: 240px;
   overflow: visible;
+  border: 1px solid white; /* 흰색 테두리 추가 */
 }
 .reviewwritescreen .reviewwriteline-3 {
   margin-top: -1px;
@@ -234,22 +235,61 @@
   width: 1596px;
   height: 2271px;
 }
-.reviewwritescreen .reviewwritediv3 {
-  color: #ffffff;
-  text-align: left;
-  font-family: "Manrope-SemiBold", sans-serif;
-  font-size: 36px;
-  line-height: 150%;
-  font-weight: 600;
+.reviewwritescreen .reviewedit {
   position: absolute;
   left: 162px;
-  top: 240px;
-  width: 1596px;
-  height: 167px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  top: 457px;
+  min-height: 2221px;  /* 높이를 조절합니다 */
+  max-height: 2221px;  /* 최대 높이를 설정합니다 */
+  width: 1596px;  /* 너비를 조절합니다 */
+  overflow-y: auto;  /* 내용이 넘칠 때 스크롤 표시 */
 }
+.reviewwritescreen .ck-editor__editable {
+  left: 162px;
+  top: 600px;
+  min-height: 2221px;  /* 높이를 조절합니다 */
+  max-height: 2221px;  /* 최대 높이를 설정합니다 */
+  width: 1596px;  /* 너비를 조절합니다 */
+}
+.reviewwritescreen .reviewbox{
+
+  padding-left: 20px; /* 왼쪽에 20px의 패딩을 추가 */
+  position: absolute; /* 절대 위치 지정. 부모 컨테이너를 기준으로 위치 설정 */
+  left: 162px; /* 왼쪽에서 162px 떨어진 위치에 요소 배치 */
+  top: 240px; /* 위쪽에서 240px 떨어진 위치에 요소 배치 */
+  width: 1596px; /* 요소의 너비를 1596px로 설정 */
+  height: 167px; /* 요소의 높이를 167px로 설정 */
+  display: flex; /* 요소를 Flexbox 컨테이너로 설정 */
+  align-items: center; /* 세로 방향에서 컨텐츠를 가운데 정렬 */
+  justify-content: flex-start; /* 가로 방향에서 컨텐츠를 왼쪽으로 정렬 */
+  box-sizing: border-box;          /* padding과 border를 너비에 포함하도록 설정 */
+}
+.reviewwritescreen .reviewwritediv3 {
+  color: #ffffff; /* 텍스트 색상을 흰색으로 설정 */
+  text-align: left; /* 텍스트 정렬을 왼쪽으로 설정 */
+  font-family: "Manrope-SemiBold", sans-serif; /* 폰트를 Manrope-SemiBold로 설정하고, 해당 폰트가 없을 경우 sans-serif 폰트 사용 */
+  font-size: 36px; /* 글자 크기를 36px로 설정 */
+  line-height: 150%; /* 줄 간격을 150%로 설정 */
+  font-weight: 600; /* 폰트 두께를 600으로 설정 (굵은 글씨) */
+  width: 200px; /* 요소의 너비를 1596px로 설정 */
+  height: 167px; /* 요소의 높이를 167px로 설정 */
+  display: flex; /* 요소를 Flexbox 컨테이너로 설정 */
+  align-items: center; /* 세로 방향에서 컨텐츠를 가운데 정렬 */
+  justify-content: flex-start; /* 가로 방향에서 컨텐츠를 왼쪽으로 정렬 */
+}
+
+.reviewwritescreen .reviewwrite {
+  font-size: 36px; /* 글자 크기를 36px로 설정 */
+  left: 200px; /* 왼쪽에서 200px 떨어진 위치에 요소 배치 */
+  width: 1376px; /* 요소의 너비를 1376px로 설정 */
+  height: 167px; /* 요소의 높이를 167px로 설정 */
+  background-color: #141414; /* 배경색을 #141414로 설정 */
+  color: #ffffff; /* 글자 색상을 흰색으로 설정 */
+  border: 1px solid #ffffff; /* 흰색 1px 실선 테두리 추가 */
+  padding-left: 20px;
+}
+
+
 .reviewwritescreen .reviewwritediv4 {
   color: #ffffff;
   text-align: center;
