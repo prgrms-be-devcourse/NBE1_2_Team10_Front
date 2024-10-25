@@ -104,6 +104,28 @@ export const MovieDetail = ({className, ...props}) => {
         return stars;
     };
 
+    const dibProcess = async() => {
+
+        try {
+            // POST 요청 보내기, 헤더에 accessToken 포함
+            await axios.put(
+                `/movies/${movie.movieId}/dib`,
+                null,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'accessToken': accessToken,
+                    },
+                }
+            );
+
+            console.log("Dib process complete");
+
+        } catch (error) {
+            console.error("Error posting review:", error);
+        }
+    }
+
     // 리뷰
     //const ReviewList = ({movieId}) => {
     //     const [reviews, setReviews] = useState([]);  // 한줄평 목록
@@ -655,7 +677,8 @@ export const MovieDetail = ({className, ...props}) => {
                     </div>
                     <div className="detailcontainer13">
                         <div className="detailbuttons-container4">
-                            <div className="detailbutton4">
+                            {/*메인페이지 -> 찜 버튼*/}
+                            <div className="detailbutton4" onClick = {dibProcess}>
                                 <img className="detailicon8" src={icon7}/>
                             </div>
                         </div>
