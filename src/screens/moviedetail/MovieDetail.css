@@ -7,7 +7,7 @@
 }
 .detaildiv {
   background: #141414;
-  width: 1920px;             /* 요소의 너비를 1900px로 설정 */
+  width: 1500px;             /* 요소의 너비를 1900px로 설정 */
   height: 4679px;
   position: relative;
   overflow: hidden;
@@ -1056,7 +1056,8 @@
   flex-shrink: 0;
   width: 169px;
   position: relative;
-  margin-left: auto; /* 부모 기준 맨 우측 배치 */
+  /*margin-left: auto;  부모 기준 맨 우측 배치 */
+  left: 1000px;
 }
 
 .detailscreen .detailline-5 {
