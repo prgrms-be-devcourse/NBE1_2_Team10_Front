@@ -52,17 +52,68 @@ import "../mainpage/Mainstyle.css"
 
 export const MainPage = () => {
 
+  const [token, setToken] = useState(null);
   // 다른 페이지로 이동
   const navigate = useNavigate(); // navigate 훅을 사용하여 페이지 전환
 
-  // 회원 가입 페이지로 이동
-  const handleSignupClick = () => {
-    navigate('/signup'); // 회원가입 페이지로 이동
+  useEffect(() => {
+
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      // accessToken을 상태로 저장
+      setToken(accessToken);
+    }
+
+    console.log(accessToken);
+
+    // 백엔드에서 영화 데이터를 요청
+    axios.get('/movies/list')  // 영화 데이터를 가져오는 백엔드 API 엔드포인트
+        .then(response => {
+          console.log(response);
+          const ratingMovieList = response.data.result.ratingMovieList;
+          const dibMovieList = response.data.result.dibMovieList;  // dibMovieList만 추출
+          const reviewMovieList = response.data.result.reviewMovieList;
+          setRatingMovies(ratingMovieList);  // 받아온 영화 목록을 상태에 저장
+          setDibMovies(dibMovieList);
+          setReviewMovies(reviewMovieList);
+          setLoading(false);
+        })
+        .catch(error => {
+          setError(error);  // 에러 처리
+          setLoading(false);
+        });
+  }, []);  // 컴포넌트가 처음 렌더링될 때 한 번만 실행
+
+  // useEffect(() => {
+  //   const accessToken = localStorage.getItem('accessToken');
+  //   if (accessToken) {
+  //     // accessToken을 상태로 저장
+  //     setToken(accessToken);
+  //   }
+  // }, [navigate]);
+
+  // 회원가입 또는 로그아웃 클릭 시 처리되는 함수
+  const handleSignupOrLogoutClick = () => {
+    if (token) {
+      // 로그아웃 처리: 토큰 삭제 및 로그인 페이지로 이동
+      localStorage.removeItem('accessToken');
+      setToken(null); // 상태에서 토큰 삭제
+      // navigate('/signin'); // 로그인 페이지로 리다이렉트
+    } else {
+      // 회원가입 페이지로 이동
+      navigate('/signup');
+    }
   };
 
   // 로그인 페이지로 이동
   const handleLoginClick = () => {
-    navigate('/signin'); // 로그인 페이지로 이동
+    if (token) {
+      // accessToken이 있을 때: 내정보 페이지로 이동
+      navigate('/mypage');
+    } else {
+      // accessToken이 없을 때: 로그인 페이지로 이동
+      navigate('/signin');
+    }
   };
 
   // 평점 순 상세 페이지 이동 핸들러
@@ -185,25 +236,6 @@ export const MainPage = () => {
   const [reviewMovies, setReviewMovies] = useState([]);  // 영화 데이터를 저장할 상태]
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  useEffect(() => {
-    // 백엔드에서 영화 데이터를 요청
-    axios.get('/movies/list')  // 영화 데이터를 가져오는 백엔드 API 엔드포인트
-        .then(response => {
-          console.log(response);
-          const ratingMovieList = response.data.result.ratingMovieList;
-          const dibMovieList = response.data.result.dibMovieList;  // dibMovieList만 추출
-          const reviewMovieList = response.data.result.reviewMovieList;
-          setRatingMovies(ratingMovieList);  // 받아온 영화 목록을 상태에 저장
-          setDibMovies(dibMovieList);
-          setReviewMovies(reviewMovieList);
-          setLoading(false);
-        })
-        .catch(error => {
-          setError(error);  // 에러 처리
-          setLoading(false);
-        });
-  }, []);  // 컴포넌트가 처음 렌더링될 때 한 번만 실행
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -754,8 +786,17 @@ export const MainPage = () => {
             <div className="mainview">
               <img className="mainlogo" alt="Logo" src={logo}/>
               <div className="mainbuttons-container-3">
-                <div className="maintext-wrapper-5" onClick={handleLoginClick} style={{cursor: 'pointer'}}>로그인</div>
-                <div className="maintext-wrapper-6" onClick={handleSignupClick} style={{cursor: 'pointer'}}>회원가입</div>
+                {/* token에 따라 로그인/내정보 문구 변경 */}
+                <div className="maintext-wrapper-5" onClick={handleLoginClick} style={{cursor: 'pointer'}}>
+                  {token ? '내정보' : '로그인'}
+                </div>
+                {/* accessToken이 있으면 '로그아웃', 없으면 '회원가입' */}
+                <div
+                    className="maintext-wrapper-6"
+                    onClick={handleSignupOrLogoutClick}
+                    style={{ cursor: 'pointer' }}>
+                  {token ? '로그아웃' : '회원가입'}
+                </div>
               </div>
             </div>
           </div>
