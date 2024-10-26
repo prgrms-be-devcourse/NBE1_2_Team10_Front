@@ -43,6 +43,11 @@ export const MovieDetail = ({className, ...props}) => {
 
     const navigate = useNavigate();
 
+    // 메인 화면으로 이동
+    const handleLogoClick = () => {
+        navigate("/");
+    };
+
     const handleLogin = () => {
         navigate('/signin'); // 로그인 페이지로 이동
     };
@@ -500,7 +505,7 @@ export const MovieDetail = ({className, ...props}) => {
                     </div>
                 </div>
                 <div className="detailnavbar">
-                    <div className="detaillogo">
+                    <div className="detaillogo" onClick={handleLogoClick}>
                         <div className="detailvector">
                             <img className="detailvector2" src={vector1}/>
                             <img className="detailicon4" src={icon3}/>
