@@ -19,6 +19,8 @@ export const MyPage = ({className, ...props}) => {
     const [email, setEmail] = useState('');
     const [token, setToken] = useState(null);
 
+    const [dibs, setDibs] = useState([]);
+
     const navigate = useNavigate(); // 페이지 이동을 위한 navigate 사용
 
     useEffect(() => {
@@ -28,9 +30,49 @@ export const MyPage = ({className, ...props}) => {
             // accessToken을 상태로 저장
             setToken(accessToken);
         }
-
-        console.log(accessToken);
     }, []);  // 컴포넌트가 처음 렌더링될 때 한 번만 실행
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem('accessToken');
+        if (accessToken) setToken(accessToken);
+        console.log(accessToken);
+
+
+        const fetchDibs = async () => {
+            try {
+                const response = await axios.get(
+                    '/users/mypage',
+                    {
+                        headers: {
+                        'Content-Type': 'application/json',
+                        'accessToken': accessToken,
+                        },
+                    }
+                    );
+                console.log("찜 목록 불러오기 성공");
+
+                if (response.data.isSuccess) {
+                    setDibs(response.data.result.dibDTOList);
+                    console.log("응답: ",response);
+                    console.log("찜 목록 저장 성공");
+                    console.log("응답의 찜 목록 : ", response.data.result.dibDTOList)
+                    console.log("찜 목록 : ", dibs);
+                }
+                else {
+                    console.error(`Error: ${response.data.message} (Code: ${response.data.code})`);
+                }
+
+            } catch (error) {
+                console.error('Failed to fetch bookmarked movies:', error);
+            }
+        };
+
+        fetchDibs();
+    }, []);
+
+    useEffect(() => {
+        console.log("찜 목록 : ", dibs);
+    }, [dibs]);
 
     // 메인 화면으로 이동
     const handleLogoClick = () => {
@@ -57,6 +99,7 @@ export const MyPage = ({className, ...props}) => {
                 body: JSON.stringify(userData),
             });
 
+            console.log(token);
             if (response.ok) {
                 const result = await response.json();
                 console.log('User info updated successfully:', result);
@@ -69,85 +112,6 @@ export const MyPage = ({className, ...props}) => {
         } catch (error) {
             console.error('Error updating user info:', error);
         }
-    };
-
-    // 찜 목록 페이지네이션
-    const DibPagination = () => {
-        const [dibs, setDibs] = useState([]);
-        const [currentPage, setCurrentPage] = useState(1);
-        const [totalPages, setTotalPages] = useState(0);
-        const [startPage, setStartPage] = useState(1); // 페이지 시작 번호
-        const maxPagesToShow = 10; // 한번에 보여줄 페이지 수
-        const dibsPerPage = 10; // 페이지당 보여줄 한줄평 수
-
-        useEffect(() => {
-            // 백엔드에서 데이터 받아오기
-            const fetchDibs = async () => {
-                try {
-                    const response = await axios.get(`/users/mypage`);
-
-                    if (!response.data.isSuccess) {
-                        console.error(`Error: ${response.data.message} (Code: ${response.data.code})`);
-                        return; // 에러 처리
-                    }
-
-                    setDibs(response.data.result.content.dibDTOList);
-                    setTotalPages(response.data.result.pageable.totalPages);
-                } catch (error) {
-                    console.error('Failed to fetch reviews:', error);
-                }
-            };
-            fetchDibs();
-        }, [currentPage, dibsPerPage]);
-
-        // 페이지 변환
-        const handlePageChange = (pageNum) => {
-            setCurrentPage(pageNum);
-        };
-
-        // 이후 페이지 그룹 변환
-        const handleNextPageGroup = () => {
-            if (startPage + maxPagesToShow <= totalPages) {
-                setStartPage(startPage + maxPagesToShow);
-            }
-        };
-
-        // 이전 페이지 그룹 이동
-        const handlePrevPageGroup = () => {
-            if (startPage - maxPagesToShow > 0) {
-                setStartPage(startPage - maxPagesToShow);
-            }
-        };
-
-        // 페이지 버튼 렌더링
-        const renderPageButtons = () => {
-            const buttons = [];
-            for (let i = startPage; i < startPage + maxPagesToShow && i <= totalPages; i++) {
-                buttons.push(
-                    <div key={i} className="detailgroup-15" onClick={() => handlePageChange(i)}>
-                        <div className="detailrectangle-5182"></div>
-                        <div className={`detail_${i === currentPage ? 'active' : ''}`}>{i}</div>
-                    </div>
-                );
-            }
-            return buttons;
-        };
-
-        return (
-            <div>
-                {dibs.map(dib => (
-                    <div className="mypagesub-container2" key={dib.movieId}>
-                        <div className="mypagecard">
-                            <div>
-                                <img className="mypageimage" src={dib.moviePosterUrl} alt={dib.movieTitle}/>
-                                <div className="mypagediv2">{dib.movieTitle}</div>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        );
-
     };
 
     return (
@@ -298,15 +262,56 @@ export const MyPage = ({className, ...props}) => {
                         <img className="mypagestream-vibe" src={streamvibe0}/>
                     </div>
                 </div>
-                <div className="mypagecontainer8">
-
+                    <div>
+                        <div className="mypagecontainer8">
+                            {dibs[0] && (
+                                <div className="mypageheading-3">
+                                    <div className="sub-container2">
+                                        <div className="card">
+                                            <img className="image" src={dibs[0].moviePost}/>
+                                            <div className="mypagediv2">{dibs[0].movieTitle}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                        <div className="mypagecontainer9">
+                            {dibs[1] && (
+                                <div className="mypageheading-3">
+                                    <div className="sub-container2">
+                                        <div className="card">
+                                            <img className="image" src={dibs[1].moviePost}/>
+                                            <div className="mypagediv2">{dibs[1].movieTitle}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                        <div className="mypagecontainer10">
+                            {dibs[2] && (
+                                <div className="mypageheading-3">
+                                    <div className="sub-container2">
+                                        <div className="card">
+                                            <img className="image" src={dibs[2].moviePost}/>
+                                            <div className="mypagediv2">{dibs[2].movieTitle}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                        <div className="mypagecontainer11">
+                            {dibs[3] && (
+                                <div className="mypageheading-3">
+                                    <div className="sub-container2">
+                                        <div className="card">
+                                            <img className="image" src={dibs[3].moviePost}/>
+                                            <div className="mypagediv2">{dibs[3].movieTitle}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
                 </div>
-
-
-                <div className="mypageframe-9">
-                    <renderPageButtons/>
-                </div>
-
             </div>
         </div>
     );

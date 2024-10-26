@@ -482,7 +482,7 @@
   color: #ffffff;
   text-align: left;
   font-family: "Inter-Medium", sans-serif;
-  font-size: 28px;
+  font-size: 18px;
   font-weight: 500;
   position: relative;
   width: 127.02px;
@@ -518,7 +518,7 @@
   height: 450px;
   position: absolute;
   left: 970px;
-  top: 967px;
+  top: 970px;
 }
 .mypagescreen .mypagegroup-40 {
   position: absolute;
@@ -899,4 +899,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.mypagescreen .mypageimage-container {
+  align-items: flex-start;        /* 자식 항목들을 컨테이너의 시작 부분(위쪽)으로 정렬 */
+  position: relative;             /* 컨테이너를 부모 요소를 기준으로 상대적인 위치로 설정 */
+  height: 252px;                   /* 컨테이너의 세로 높이를 부모 요소의 100%로 설정 */
+  width: 100%;                    /* 컨테이너의 가로 너비를 부모 요소의 100%로 설정 */
+  pointer-events: auto;           /* 해당 요소와 자식 요소들이 클릭 및 마우스 이벤트를 받을 수 있도록 설정 */
+}
+
+.mypagescreen.mypageheading-3 {
+  color: #ffffff;
+  flex: 1;
+  font-family: "Manrope", Helvetica;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 27px;
+  position: relative;
 }
