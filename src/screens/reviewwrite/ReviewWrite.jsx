@@ -1,17 +1,24 @@
 import "./ReviewWrite.css";
-import React, { useState, useEffect } from "react";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
+import React, {useState, useEffect} from "react";
+import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
+import axios from "axios";
+import {useNavigate} from "react-router-dom"; // 이전 페이지로 돌아가기 위한 훅
 
 export const ReviewWrite = ({className, ...props}) => {
 
     // 전달 받은 데이터 저장
     const location = useLocation();
-    const { movie } = location.state || {}; // 전달된 데이터를 추출
+    const {movie} = location.state || {}; // 전달된 데이터를 추출
+    const [inputData, setInputData] = useState(""); // reviewwrite의 값
+    const [editorData, setEditorData] = useState(""); // CKEditor의 값
+    const navigate = useNavigate(); // 페이지 이동을 위한 navigate
 
-    const navigate = useNavigate();
+    // 입력 필드의 변화 감지
+    const handleInputChange = (event) => {
+        setInputData(event.target.value);
+    };
 
     // 메인 화면으로 이동
     const handleLogoClick = () => {
@@ -33,8 +40,6 @@ export const ReviewWrite = ({className, ...props}) => {
         navigate('/');
     };
 
-    const [editorData, setEditorData] = useState("");
-
     // 컴포넌트가 마운트될 때 LocalStorage에서 데이터를 불러옴
     useEffect(() => {
         const savedData = localStorage.getItem("editorData");
@@ -43,11 +48,35 @@ export const ReviewWrite = ({className, ...props}) => {
         }
     }, []);
 
-    // 데이터를 저장하는 함수
-    const handleSave = () => {
-        localStorage.setItem("editorData", editorData);  // 데이터를 LocalStorage에 저장
-        alert("내용이 저장되었습니다!");
-        console.log("내용이 저장되었습니다!");
+    // 데이터 전송 및 페이지 이동
+    const handleSave = async () => {
+
+        // 로컬 스토리지에서 accessToken 불러오기
+        const accessToken = localStorage.getItem("accessToken");
+
+        // CKEditor 데이터에서 HTML 태그 제거
+        const plainText = editorData.replace(/<[^>]+>/g, "");
+
+        try {
+            // 데이터를 백엔드에 POST 요청으로 전송
+            await axios.post(
+                `/movies/${movie}/reviews`,
+                {
+                    title: inputData,
+                    content: plainText,
+                },
+                {
+                    headers: {
+                        'accessToken': accessToken,
+                    },
+                }
+            );
+
+            // 성공적으로 전송되면 이전 페이지로 이동
+            navigate(-1);
+        } catch (error) {
+            console.error("데이터 전송 중 오류 발생:", error);
+        }
     };
 
 
@@ -132,14 +161,18 @@ export const ReviewWrite = ({className, ...props}) => {
                         data={editorData}
                         onChange={(event, editor) => {
                             const data = editor.getData();
-                            setEditorData(data);  // 상태에 에디터 데이터를 저장
+                            setEditorData(data);
                         }}
                     />
                     {/* 저장 버튼 */}
                 </div>
                 <div className="reviewbox">
-                    <div className="reviewwritediv3">리뷰 제목 : </div>
-                    <input className="reviewwrite"/>
+                    <div className="reviewwritediv3">리뷰 제목 :</div>
+                    <input
+                        className="reviewwrite"
+                        value={inputData}
+                        onChange={handleInputChange}
+                    />
                 </div>
                 <div className="reviewwritediv4">리뷰 작성</div>
                 <div className="reviewwritenavbar">
@@ -156,7 +189,9 @@ export const ReviewWrite = ({className, ...props}) => {
                     </div>
                 </div>
                 <div className="reviewwriterectangle-514"></div>
-                <div className="reviewwritediv7"onClick={handleSave}>등록</div>
+                <div className="reviewwritediv7" onClick={handleSave}>
+                    등록
+                </div>
                 <div className="reviewwriteline-4"></div>
             </div>
         </div>
