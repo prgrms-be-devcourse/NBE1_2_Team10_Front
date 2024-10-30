@@ -7,7 +7,7 @@
 }
 .reviewdetailscreen .reviewdetaildiv {
   background-color: #141414; /* 배경색을 어두운 회색(#141414)으로 설정 */
-  height: 2787px;            /* 요소의 높이를 4182px로 설정 */
+  height: 1500px;            /* 요소의 높이를 4182px로 설정 */
   overflow: hidden;          /* 요소의 내용이 넘칠 경우 보이지 않도록 설정 */
   position: relative;        /* 자식 요소의 절대 위치를 기준으로 설정 */
   width: 1920px;             /* 요소의 너비를 1900px로 설정 */
@@ -39,14 +39,14 @@
   position: absolute;
   inset: 0;
 }
-.reviewdetailscreen .reviewdetailrectangle-513 {
-  width: 1596px;
-  height: 479px;
-  position: absolute;
-  left: 161px;
-  top: 340px;
-  overflow: visible;
-}
+/*.reviewdetailscreen .reviewdetailrectangle-513 {*/
+/*  width: 1596px;*/
+/*  height: 479px;*/
+/*  position: absolute;*/
+/*  left: 161px;*/
+/*  top: 340px;*/
+/*  overflow: visible;*/
+/*}*/
 .reviewdetailscreen .reviewdetaildiv2 {
   color: #ffffff;
   text-align: left;
@@ -58,8 +58,12 @@
   left: 161px;
   top: 340px;
   width: 1596px;
-  height: 479px;
+  min-height: 479px; /* 최소 높이 설정 */
+  padding: 20px; /* 내부 여백 추가 */
+  border: 2px solid #ffffff; /* 흰색 테두리 추가 */
+  box-sizing: border-box; /* 패딩과 테두리를 width와 height에 포함 */
 }
+
 .reviewdetailscreen .reviewdetaildiv3 {
   color: #ffffff;
   text-align: center;
@@ -70,7 +74,7 @@
   position: absolute;
   left: 150px;
   top: 222px;
-  width: 235px;
+  width: 250px;
   height: 102px;
   display: flex;
   align-items: center;
@@ -173,17 +177,18 @@
   justify-content: center;
 }
 .reviewdetailscreen .reviewdetailfooter {
-  background: #0f0f0f;
-  padding: 100px 162px 50px 162px;
-  display: flex;
-  flex-direction: column;
-  gap: 100px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 1920px;
-  position: absolute;
-  left: -1px;
-  top: 2282px;
+  background: #0f0f0f;             /* 배경색을 어두운 회색(#0f0f0f)으로 설정 */
+  padding: 100px 162px 50px 162px; /* 위쪽 100px, 오른쪽 162px, 아래쪽 50px, 왼쪽 162px의 여백 설정 */
+  display: flex;                    /* 플렉스 박스로 설정하여 자식 요소 정렬 */
+  flex-direction: column;           /* 플렉스 방향을 세로(column)로 설정 */
+  gap: 100px;                       /* 자식 요소 간의 간격을 100px로 설정 */
+  align-items: flex-start;          /* 자식 요소를 왼쪽(flex-start)으로 정렬 */
+  justify-content: flex-start;      /* 자식 요소를 위쪽(flex-start)으로 정렬 */
+  width: 100%;                      /* 부모 요소의 너비에 맞게 100%로 설정 */
+  position: absolute;               /* 부모 요소 내에서 절대 위치 지정 */
+  bottom: 0;                        /* 부모 요소의 하단에 위치하도록 설정 */
+  left: 0;                          /* 왼쪽을 0으로 설정하여 부모 요소의 왼쪽 끝에 맞춤 */
+  box-sizing: border-box;           /* padding과 border를 너비(width)에 포함하도록 설정 */
 }
 .reviewdetailscreen .reviewdetailcontainer {
   display: flex;
@@ -396,7 +401,7 @@
   position: absolute;
   left: 161px;
   top: 1226px;
-  width: 103px;
+  width: 115px;
   height: 27.05px;
 }
 .reviewdetailscreen .reviewdetailtext3 {
@@ -407,9 +412,9 @@
   line-height: 153%;
   font-weight: 500;
   position: absolute;
-  left: 276px;
+  left: 300px;
   top: 1229.86px;
-  width: 86px;
+  width: 100px;
   height: 22.22px;
 }
 .reviewdetailscreen .reviewdetailheroicons-solid-hand-thumb-up {
@@ -495,7 +500,7 @@
   line-height: 153%;
   font-weight: 500;
   position: absolute;
-  left: 278px;
+  left: 300px;
   top: 1616px;
 }
 .reviewdetailscreen .reviewdetailheroicons-solid-hand-thumb-up2 {
@@ -660,17 +665,17 @@
   line-height: 153%;
   font-weight: 500;
   position: absolute;
-  left: 276px;
+  left: 300px;
   top: 1423px;
 }
-.reviewdetailscreen .reviewdetailheroicons-solid-hand-thumb-up4 {
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  left: 161px;
-  top: 1517px;
-  overflow: visible;
-}
+/*.reviewdetailscreen .reviewdetailheroicons-solid-hand-thumb-up4 {*/
+/*  width: 24px;*/
+/*  height: 24px;*/
+/*  position: absolute;*/
+/*  left: 161px;*/
+/*  top: 1517px;*/
+/*  overflow: visible;*/
+/*}*/
 .reviewdetailscreen .reviewdetailtext15 {
   color: #ffffff;
   text-align: center;
