@@ -41,7 +41,17 @@ export const MovieDetail = ({className, ...props}) => {
     const location = useLocation(); // 현재 위치 정보를 가져옴
     const {movie} = location.state || {}; // 전달된 상태에서 영화 데이터 추출
 
+    console.log("영화 정보: ", movie)
+
+    {/* 리뷰 목록, 한줄평 목록 저장 변수 */}
+    const [reviews, setReviews] = useState([]);  // 리뷰 목록
+    const [comments, setComments] = useState([]);  // 한줄평 목록
+
+    const [dibIsActive, setDibIsActive] = useState(false);
+
+
     const navigate = useNavigate();
+
 
     // 메인 화면으로 이동
     const handleLogoClick = () => {
@@ -76,14 +86,31 @@ export const MovieDetail = ({className, ...props}) => {
 
     // 리뷰 제목 클릭 시 리뷰 상세 조회 페이지로 이동
     const handleTitleClick = (reviewId) => {
-        // Navigate to the review detail page
-        navigate(`/movies/${movie.movieId}/reviews/${reviewId}`);
+        navigate(`/movies/${movie.movieId}/reviews/${reviewId}`, {state: {review: reviewId}});
     };
 
     // 개봉일 포맷팅 함수
     const formatReleaseDate = (date) => {
         return date.replace(/(\d{4})(\d{2})(\d{2})/, '$1.$2.$3');
     };
+
+    const formatReleaseDateTime = (date) => {
+        if (!date) {
+            console.error("Date is undefined or null");
+            return "";
+        }
+
+        const [datePart, timePart] = date.replace('T', ' ').split(' ');
+
+        const formattedDate = datePart.replace(/(\d{4})-(\d{2})-(\d{2})/, '$1.$2.$3');
+
+        const formattedTime = timePart.slice(0, 8);
+
+        return `${formattedDate} ${formattedTime}`;
+    };
+
+
+
 
     // 별점 표시 생성 함수
     const renderStars = (rating) => {
@@ -112,7 +139,8 @@ export const MovieDetail = ({className, ...props}) => {
     const dibProcess = async() => {
 
         try {
-            // POST 요청 보내기, 헤더에 accessToken 포함
+            setDibIsActive((prev) => !prev);
+            // PUT 요청 보내기, 헤더에 accessToken 포함
             await axios.put(
                 `/movies/${movie.movieId}/dib`,
                 null,
@@ -131,310 +159,86 @@ export const MovieDetail = ({className, ...props}) => {
         }
     }
 
-    // 리뷰
-    //const ReviewList = ({movieId}) => {
-    //     const [reviews, setReviews] = useState([]);  // 한줄평 목록
-    //     const [sort, setSort] = useState('LATEST'); // 정렬 기준(Default : 최신순)
-    //
-    //
-    //     useEffect(() => {
-    //
-    //         // 백엔드에서 데이터 받아오기
-    //         const fetchComments = async () => {
-    //             try {
-    //                 const response = await axios.get(`/movies/${movieId}/reviews/list`, {
-    //                     params: {page: 0, sort, content: false}
-    //                 });
-    //
-    //                 // 콘솔에 서버 응답 데이터를 출력
-    //                 console.log('서버 응답 데이터:', response);
-    //
-    //                 if (!response.data.isSuccess) {
-    //                     console.error(`Error: ${response.data.message} (Code: ${response.data.code})`);
-    //                     return; // 에러 처리
-    //                 }
-    //
-    //                 // 응답에서 reviewList 추출
-    //                 const reviewList = response.data.result;
-    //
-    //                 // reviewList가 배열인지 확인 후 상태 업데이트
-    //                 if (Array.isArray(reviewList)) {
-    //                     setReviews(reviewList);
-    //                 } else {
-    //                     setReviews([]); // 빈 배열로 초기화
-    //                 }
-    //
-    //                 console.log('첫번째 리뷰:', reviews[0])
-    //                 //setTotalPages(10); //테스트 위해서 임의로 정한 값
-    //
-    //                 // 백에서 Pageable 적용 완료되면 아래 코드로 변경
-    //                 // setComments(response.data.result.content);
-    //                 // setTotalPages(response.data.result.pageable.totalPages);
-    //             } catch (error) {
-    //                 console.error("한줄평을 불러오는 데에 실패했습니다");
-    //             }
-    //         };
-    //
-    //         fetchComments();
-    //     }, [sort, movieId]);
-    //
-    //     // 정렬 기준 변경
-    //     const handleSortChange = (type) => {
-    //         setSort(type);
-    //         //setCurrentPage(0); // 정렬 기준 바뀌면 첫번째 페이지로 이동
-    //     };
-    //
-    //     return (
-    //         <div>
-    //             {/* 정렬 버튼 */}
-    //             <div className="sort-buttons">
-    //                 <button
-    //                     onClick={() => handleSortChange('LIKE')}
-    //                     className={sort === 'LIKE' ? 'active' : ''}
-    //                 >
-    //                     좋아요순
-    //                 </button>
-    //                 <button
-    //                     onClick={() => handleSortChange('LATEST')}
-    //                     className={sort === 'LATEST' ? 'active' : ''}
-    //                 >
-    //                     최신순
-    //                 </button>
-    //             </div>
-    //
-    //             {/* 리 */}
-    //             <div className="footer2">
-    //                 {reviews.length > 0 ? (
-    //                     <>
-    //                         <div className="form">
-    //                             <div className="heading3">reviews[0].userId</div>
-    //                             <div className="heading4">reviews[0].title</div>
-    //                             <div className="heading6">reviews[0].createdAt</div>
-    //                         </div>
-    //
-    //                     </>
-    //                 ) : (
-    //                     <div className="text3">리뷰가 없습니다</div>
-    //                 )}
-    //             </div>
-    //         </div>
-    //     );
-    // 한줄평
-    const CommentList = ({movieId}) => {
-        const [comments, setComments] = useState([]);  // 한줄평 목록
-        const [sortType, setSortType] = useState('LATEST'); // 정렬 기준(Default : 최신순)
+    useEffect(() => {
+        const fetchComments = async () => {
+            try {
+                const response = await axios.get(`/movies/${movie.movieId}/comments`,
+                    {
+                    params: { page: 0, sortType : 'LATEST'},
+                });
 
+                console.log('서버 응답 데이터:', response.data);
 
-        useEffect(() => {
-
-            // 백엔드에서 데이터 받아오기
-            const fetchComments = async () => {
-                try {
-                    const response = await axios.get(`/movies/${movieId}/comments`, {
-                        params: {page: 0, sortType}
-                    });
-
-                    // 콘솔에 서버 응답 데이터를 출력
-                    console.log('서버 응답 데이터:', response);
-
-                    if (!response.data.isSuccess) {
-                        console.error(`Error: ${response.data.message} (Code: ${response.data.code})`);
-                        return; // 에러 처리
-                    }
-
-                    // 응답에서 reviewList 추출
-                    const reviewList = response.data.result;
-
-                    // reviewList가 배열인지 확인 후 상태 업데이트
-                    if (Array.isArray(reviewList)) {
-                        setComments(reviewList);
-                    } else {
-                        setComments([]); // 빈 배열로 초기화
-                    }
-
-                    console.log('첫번째 리뷰:', comments[0])
-                    //setTotalPages(10); //테스트 위해서 임의로 정한 값
-
-                    // 백에서 Pageable 적용 완료되면 아래 코드로 변경
-                    // setComments(response.data.result.content);
-                    // setTotalPages(response.data.result.pageable.totalPages);
-                } catch (error) {
-                    console.error("한줄평을 불러오는 데에 실패했습니다");
+                if (!response.data.isSuccess) {
+                    console.error(
+                        `Error: ${response.data.message} (Code: ${response.data.code})`
+                    );
+                    return;
                 }
-            };
 
-            fetchComments();
-        }, [sortType, movieId]);
+                const commentList = response.data.result.content;
+                console.log("한줄평 응답 1: ", response.data.result.content)
+                console.log("한줄평 응답 2:", commentList)
+                console.log("한줄평 첫번째 값:", commentList[0]);
 
-        // 정렬 기준 변경
-        const handleSortChange = (type) => {
-            setSortType(type);
-            //setCurrentPage(0); // 정렬 기준 바뀌면 첫번째 페이지로 이동
+                if (Array.isArray(commentList)) {
+                    setComments(commentList);
+                } else {
+                    console.log("Not Array");
+                    setComments([]);
+                }
+            } catch (error) {
+                console.error("한줄평을 불러오는 데에 실패했습니다");
+            }
         };
 
-        return (
-            <div>
-                {/* 정렬 버튼 */}
-                <div className="sort-buttons">
-                    <button
-                        onClick={() => handleSortChange('LIKE')}
-                        className={sortType === 'LIKE' ? 'active' : ''}
-                    >
-                        좋아요순
-                    </button>
-                    <button
-                        onClick={() => handleSortChange('LATEST')}
-                        className={sortType === 'LATEST' ? 'active' : ''}
-                    >
-                        최신순
-                    </button>
-                </div>
+        fetchComments();
+    }, [movie.movieId]);
 
-                {/* 한줄평 */}
-                <div className="footer5">
-                    {comments.length > 0 ? (
-                        <>
-                            <div className="text3">{comments[0]?.userId || '알 수 없는 사용자'}</div>
-                            <SubContainer className="sub-container-instance"></SubContainer>
-                            <div className="group-6">
-                                <div className="rectangle-515"></div>
-                                <div className="div6">{comments[0]?.content}</div>
-                                <div className="text4">{comments[0]?.createdAt}</div>
-                            </div>
-                            <div className="icons">
-                                <img
-                                    className="heroicons-solid-hand-thumb-up"
-                                    src={heroiconssolidhandthumbup0}
-                                />
-                                <div className="text5">{comments[0]?.like}</div>
-                                <img
-                                    className="heroicons-solid-hand-thumb-up2"
-                                    src={heroiconssolidhandthumbup1}
-                                />
-                                <div className="text5">{comments[0]?.dislike}</div>
-                            </div>
-                        </>
-                    ) : (
-                        <div className="text3">댓글이 없습니다</div>
-                    )}
-                </div>
-            </div>
-        );
-        // <div className="footer5">
-        //   <div className="text3">{comments[0].userId} </div>
-        //   <SubContainer className="sub-container-instance"></SubContainer>
-        //   <div className="group-6">
-        //     <div className="rectangle-515"></div>
-        //     <div className="div6">{comments[0].content} </div>
-        //     <div className="text4">{comments[0].createdAt} </div>
-        //   </div>
-        //   <div className="icons">
-        //     <img
-        //         className="heroicons-solid-hand-thumb-up"
-        //         src={heroiconssolidhandthumbup0}
-        //     />
-        //     <div className="text5">{comments[0].like} </div>
-        //     <img
-        //         className="heroicons-solid-hand-thumb-up2"
-        //         src={heroiconssolidhandthumbup1}
-        //     />
-        //     <div className="text5">{comments[0].dislike} </div>
-        //   </div>
-        // </div>
 
-        {/*<div className="footer6">*/
-        }
-        {/*  <div className="text3">{comments[1].userId} </div>*/
-        }
-        {/*  <SubContainer className="sub-container-instance"></SubContainer>*/
-        }
-        {/*  <div className="group-6">*/
-        }
-        {/*    <div className="rectangle-515"></div>*/
-        }
-        {/*    <div className="div6">{comments[1].content} </div>*/
-        }
-        {/*    <div className="text4">{comments[1].createdAt} </div>*/
-        }
-        {/*  </div>*/
-        }
-        {/*  <div className="icons">*/
-        }
-        {/*    <img*/
-        }
-        {/*        className="heroicons-solid-hand-thumb-up3"*/
-        }
-        {/*        src={heroiconssolidhandthumbup2}*/
-        }
-        {/*    />*/
-        }
-        {/*    <div className="text5">{comments[1].like} </div>*/
-        }
-        {/*    <img*/
-        }
-        {/*        className="heroicons-solid-hand-thumb-up4"*/
-        }
-        {/*        src={heroiconssolidhandthumbup3}*/
-        }
-        {/*    />*/
-        }
-        {/*    <div className="text5">{comments[1].dislike} </div>*/
-        }
-        {/*  </div>*/
-        }
-        {/*</div>*/
-        }
+    useEffect(() => {
+        const fetchReviews = async () => {
+            try {
+                const response = await axios.get(`/movies/${movie.movieId}/reviews/list`,
+                    {
+                        params: { page: 0, sort : 'LATEST', content : false},
+                    });
 
-        {/*<div className="footer6">*/
-        }
-        {/*  <div className="text3">{comments[2].userId} </div>*/
-        }
-        {/*  <SubContainer className="sub-container-instance"></SubContainer>*/
-        }
-        {/*  <div className="group-6">*/
-        }
-        {/*    <div className="rectangle-515"></div>*/
-        }
-        {/*    <div className="div6">{comments[2].content} </div>*/
-        }
-        {/*    <div className="text4">{comments[2].createdAt} </div>*/
-        }
-        {/*  </div>*/
-        }
-        {/*  <div className="icons">*/
-        }
-        {/*    <img*/
-        }
-        {/*        className="heroicons-solid-hand-thumb-up5"*/
-        }
-        {/*        src={heroiconssolidhandthumbup4}*/
-        }
-        {/*    />*/
-        }
-        {/*    <div className="text5">{comments[2].like} </div>*/
-        }
-        {/*    <img*/
-        }
-        {/*        className="heroicons-solid-hand-thumb-up6"*/
-        }
-        {/*        src={heroiconssolidhandthumbup5}*/
-        }
-        {/*    />*/
-        }
-        {/*    <div className="text5">{comments[2].dislike} </div>*/
-        }
-        {/*  </div>*/
-        }
-        {/*</div>*/
-        }
+                console.log("서버와 연결 성공");
 
-        // </div>
-        // );
-    };
+                if (!response.data.isSuccess) {
+                    console.error(
+                        `Error: ${response.data.message} (Code: ${response.data.code})`
+                    );
+                    return;
+                }
+
+                const reviewList = response.data.result.content;
+                console.log("리뷰 목록 응답:", reviewList)
+                console.log("리뷰 첫번째 값:", reviewList[0]);
+
+                if (Array.isArray(reviewList)) {
+                    setReviews(reviewList);
+                } else {
+                    console.log("Not Array");
+                    setReviews([]);
+                }
+
+
+            } catch (error) {
+                console.error('리뷰를 불러오는 데에 실패했습니다');
+            }
+        };
+
+        fetchReviews();
+    }, [movie.movieId]);
+
+
 
     return (
         <div className="detailscreen">
             <div className="detaildiv">
+
                 <div className="detailfooter">
                     <div className="detailcontainer">
                         <div className="detailsub-container">
@@ -504,6 +308,7 @@ export const MovieDetail = ({className, ...props}) => {
                         </div>
                     </div>
                 </div>
+
                 <div className="detailnavbar">
                     <div className="detaillogo" onClick={handleLogoClick}>
                         <div className="detailvector">
@@ -535,7 +340,40 @@ export const MovieDetail = ({className, ...props}) => {
                     </div>
                 </div>
 
-                {/*<ReviewList movieId={movie.movieId}/>*/}
+                {/* 리뷰 목록 들어가야 함*/}
+                <div className="detailfooter2">
+                    <div className="detailform">
+                        <div className="detailheading4"
+                             onClick={() => handleTitleClick(reviews[0]?.reviewId)}
+                        >
+                            {reviews[0]?.title}
+                        </div>
+                        <div className="detailheading3">{reviews[0]?.alias || '익명'} </div>
+                        <div className="detailheading6">{formatReleaseDateTime(reviews[0]?.createdAt)}</div>
+                    </div>
+                </div>
+                <div className="detailfooter3">
+                    <div className="detailform">
+                        <div className="detailheading4"
+                             onClick={() => handleTitleClick(reviews[1]?.reviewId)}
+                        >
+                            {reviews[1]?.title}
+                        </div>
+                        <div className="detailheading3">{reviews[1]?.alias || '익명'} </div>
+                        <div className="detailheading6">{formatReleaseDateTime(reviews[1]?.createdAt)}</div>
+                    </div>
+                </div>
+                <div className="detailfooter4">
+                    <div className="detailform">
+                        <div className="detailheading4"
+                             onClick={() => handleTitleClick(reviews[2]?.reviewId)}
+                        >
+                            {reviews[2]?.title}
+                        </div>
+                        <div className="detailheading3">{reviews[2]?.alias || '익명'} </div>
+                        <div className="detailheading6">{formatReleaseDateTime(reviews[2]?.createdAt)}</div>
+                    </div>
+                </div>
 
                 <div className="detailheading7">Reviews</div>
                 <div className="detailbutton2" onClick={handleAddReviewClick}>
@@ -544,58 +382,71 @@ export const MovieDetail = ({className, ...props}) => {
 
                 <div className="detailline-6"></div>
 
-                {/*<div className="detailframe-9">*/}
-                {/*  <div className="detailgroup-15">*/}
-                {/*    <div className="detailrectangle-518"></div>*/}
-                {/*    <div className="detaildiv4">&lt; </div>*/}
-                {/*  </div>*/}
-                {/*  <div className="detailgroup-15">*/}
-                {/*    <div className="detailrectangle-5182"></div>*/}
-                {/*    <div className="detail_1">1 </div>*/}
-                {/*  </div>*/}
-                {/*  <div className="detailgroup-14">*/}
-                {/*    <div className="detailrectangle-5183"></div>*/}
-                {/*    <div className="detail_2">2 </div>*/}
-                {/*  </div>*/}
-                {/*  <div className="detailgroup-17">*/}
-                {/*    <div className="detailrectangle-5184"></div>*/}
-                {/*    <div className="detail_3">3 </div>*/}
-                {/*  </div>*/}
-                {/*  <div className="detailgroup-23">*/}
-                {/*    <div className="detailrectangle-5185"></div>*/}
-                {/*    <div className="detail_4">4 </div>*/}
-                {/*  </div>*/}
-                {/*  <div className="detailgroup-22">*/}
-                {/*    <div className="detailrectangle-5186"></div>*/}
-                {/*    <div className="detail_5">5 </div>*/}
-                {/*  </div>*/}
-                {/*  <div className="detailgroup-21">*/}
-                {/*    <div className="detailrectangle-5187"></div>*/}
-                {/*    <div className="detail_6">6 </div>*/}
-                {/*  </div>*/}
-                {/*  <div className="detailgroup-20">*/}
-                {/*    <div className="detailrectangle-5188"></div>*/}
-                {/*    <div className="detail_7">7 </div>*/}
-                {/*  </div>*/}
-                {/*  <div className="detailgroup-24">*/}
-                {/*    <div className="detailrectangle-5189"></div>*/}
-                {/*    <div className="detail_8">8 </div>*/}
-                {/*  </div>*/}
-                {/*  <div className="detailgroup-19">*/}
-                {/*    <div className="detailrectangle-51810"></div>*/}
-                {/*    <div className="detail_9">9 </div>*/}
-                {/*  </div>*/}
-                {/*  <div className="detailgroup-18">*/}
-                {/*    <div className="detailrectangle-51811"></div>*/}
-                {/*    <div className="detail_10">10 </div>*/}
-                {/*  </div>*/}
-                {/*  <div className="detailgroup-25">*/}
-                {/*    <div className="detailrectangle-51812"></div>*/}
-                {/*    <div className="detaildiv5">&gt; </div>*/}
-                {/*  </div>*/}
-                {/*</div>*/}
+                <div className="detailfooter5">
+                    <div className="detailtext3">{comments[0]?.userId || '익명'} </div>
+                    <div className="sub-container-instance">
+                        {renderStars(comments[0]?.rating)}
+                    </div>
+                    <div className="detailgroup-6">
+                        <div className="detailrectangle-515"></div>
+                        <div className="detaildiv6">{comments[0]?.cmtContent} </div>
+                        <div className="detailtext4">{formatReleaseDateTime(comments[0]?.createdAt)} </div>
+                    </div>
+                    <div className="detailicons">
+                        <div className="heroicons-solid-hand-thumb-up">
+                            <img className="detailunion" src={heroiconssolidhandthumbup1} />
+                            <div className="detailtext5">{comments[0]?.like} </div>
+                        </div>
+                        <div className="heroicons-solid-hand-thumb-up2">
+                            <img className="detailunion" src={heroiconssolidhandthumbup2} />
+                            <div className="detailtext5">{comments[0]?.dislike} </div>
+                        </div>
+                    </div>
+                </div>
 
-                <CommentList movieId={movie.movieId}/>
+                <div className="detailfooter6">
+                    <div className="detailtext3">{comments[1]?.userId || '익명'} </div>
+                    <div className="sub-container-instance">
+                        {renderStars(comments[1]?.rating)}
+                    </div>
+                    <div className="detailgroup-6">
+                        <div className="detailrectangle-515"></div>
+                        <div className="detaildiv6">{comments[1]?.cmtContent} </div>
+                        <div className="detailtext4">{formatReleaseDateTime(comments[1]?.createdAt)} </div>
+                    </div>
+                    <div className="detailicons">
+                        <div className="heroicons-solid-hand-thumb-up">
+                            <img className="detailunion" src={heroiconssolidhandthumbup1} />
+                            <div className="detailtext5">{comments[1]?.like} </div>
+                        </div>
+                        <div className="heroicons-solid-hand-thumb-up2">
+                            <img className="detailunion" src={heroiconssolidhandthumbup2} />
+                            <div className="detailtext5">{comments[1]?.dislike} </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="detailfooter7">
+                    <div className="detailtext3">{comments[2]?.userId || '익명'} </div>
+                    <div className="sub-container-instance">
+                        {renderStars(comments[2]?.rating)}
+                    </div>
+                    <div className="detailgroup-6">
+                        <div className="detailrectangle-515"></div>
+                        <div className="detaildiv6">{comments[2]?.cmtContent} </div>
+                        <div className="detailtext4">{formatReleaseDateTime(comments[2]?.createdAt)} </div>
+                    </div>
+                    <div className="detailicons">
+                        <div className="heroicons-solid-hand-thumb-up">
+                            <img className="detailunion" src={heroiconssolidhandthumbup1} />
+                            <div className="detailtext5">{comments[2]?.like} </div>
+                        </div>
+                        <div className="heroicons-solid-hand-thumb-up2">
+                            <img className="detailunion" src={heroiconssolidhandthumbup2} />
+                            <div className="detailtext5">{comments[2]?.dislike} </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div className="detailsub-container5">
                     <div className="detailheading8">Brief Reviews</div>
@@ -605,6 +456,7 @@ export const MovieDetail = ({className, ...props}) => {
                 </div>
 
                 <div className="detailline-5"></div>
+
                 <div className="detailcontainer5">
                     <div className="detailsub-container6">
                         <div className="detailtext-container2">
@@ -626,6 +478,7 @@ export const MovieDetail = ({className, ...props}) => {
                             <div className="detailparagraph">{movie.director} </div>
                         </div>
                     </div>
+
                     <div className="detailsub-container8">
                         <div className="detailcontainer8">
                             <div className="detailsub-container9">
@@ -643,17 +496,14 @@ export const MovieDetail = ({className, ...props}) => {
                                 <div className="detailcontainer9">
                                     <div className="detailsub-container11">
                                         <div className="detailcontainer10">
-                                            <img className="detailshape" src={shape0}/>
-                                            <img className="detailshape2" src={shape1}/>
-                                            <img className="detailshape3" src={shape2}/>
-                                            <img className="detailshape4" src={shape3}/>
-                                            <img className="detailshape5" src={shape4}/>
+                                            {renderStars(movie.sumOfRating)}
                                         </div>
                                         <div className="detailtext8">{movie.sumOfRating} </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div className="detailcontainer8">
                             <div className="detailsub-container9">
                                 <img className="detailicon7" src={icon6}/>
@@ -663,12 +513,14 @@ export const MovieDetail = ({className, ...props}) => {
                                 {movie.genre}
                             </div>
                         </div>
+
                         <div className="detailcontainer8">
                             <div className="detailheading9">Running Time</div>
                         </div>
                         <div className="detailtext10">{movie.runningTime}min</div>
                     </div>
                 </div>
+
                 <div
                     className="detailcontainer12"
                     style={{
@@ -680,19 +532,20 @@ export const MovieDetail = ({className, ...props}) => {
                     <div className="detailtext-container3">
                         <div className="detailheading12">{movie.title} </div>
                     </div>
+
                     <div className="detailcontainer13">
                         <div className="detailbuttons-container4">
-                            {/*메인페이지 -> 찜 버튼*/}
-                            <div className="detailbutton4" onClick = {dibProcess}>
-                                <img className="detailicon8" src={icon7}/>
+                            <div className={`detailbutton4 ${dibIsActive ? 'active' : ''}`} onClick={dibProcess}>
+                                <img className="detailicon8" src={icon7} />
                             </div>
                         </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
     );
-// };
 };
 
 export default MovieDetail;
