@@ -7,7 +7,7 @@
 }
 .detaildiv {
   background: #141414;
-  width: 1500px;             /* 요소의 너비를 1900px로 설정 */
+  width: 2300px;             /* 요소의 너비를 1900px로 설정 */
   height: 4679px;
   position: relative;
   overflow: hidden;
@@ -413,7 +413,7 @@
   left: 1584px;
   top: 3032px;
 }
-.detailscreen .detailtext2 {
+.detailscreen .text2 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -817,7 +817,7 @@
 }
 .detailscreen .detailtext3 {
   color: #ffffff;
-  text-align: center;
+  text-align: left;
   font-family: "Manrope-SemiBold", sans-serif;
   font-size: 14px;
   line-height: 150%;
@@ -857,7 +857,7 @@
 }
 .detailscreen .detailtext4 {
   color: #ffffff;
-  text-align: center;
+  text-align: left;
   font-family: "Manrope-SemiBold", sans-serif;
   font-size: 14px;
   line-height: 150%;
@@ -865,7 +865,7 @@
   position: absolute;
   left: 162px;
   top: 159px;
-  width: 70px;
+  width: 150px;
 }
 .detailscreen .detailicons {
   display: flex;
@@ -1501,12 +1501,24 @@
   flex-shrink: 0;
   position: relative;
 }
+.detailscreen .detailbutton4.active {
+  background: red; /* 활성화 시 배경색 변경 */
+  border-color: red; /* 활성화 시 테두리 색상 변경 */
+  /* 활성화 상태에 추가할 다른 스타일이 있다면 여기에 추가하세요 */
+}
 .detailscreen .detailicon8 {
   flex-shrink: 0;
   width: 28px;
   height: 28px;
   position: relative;
   overflow: visible;
+}
+
+.detailscreen.rating-text {
+  margin-left: 10px; /* 10px distance from the stars */
+  color: white; /* White text color */
+  font-size: 14px; /* Adjust the font size as needed */
+  vertical-align: middle; /* Aligns text vertically with stars */
 }
 
 
@@ -1538,36 +1550,4 @@
 /* 빈 별 스타일 */
 .star.empty {
   color: rgb(128, 128, 128); /* 빈 별은 회색 */
-}
-
-
-/* 정렬 버튼 */
-.sort-buttons {
-  display: flex; /* 버튼을 가로로 나열하기 위해 flexbox 사용 */
-  gap: 10px; /* 버튼 간격 설정 */
-  margin: 20px 0; /* 버튼 상하 여백 */
-}
-
-.sort-buttons button {
-  padding: 10px 15px; /* 버튼 패딩 설정 */
-  background-color: #007bff; /* 기본 배경색 */
-  color: white; /* 기본 글자색 */
-  border: none; /* 테두리 제거 */
-  border-radius: 5px; /* 둥근 모서리 */
-  cursor: pointer; /* 포인터 커서로 변경 */
-  transition: background-color 0.3s; /* 배경색 변화 애니메이션 */
-}
-
-.sort-buttons button:hover {
-  background-color: #0056b3; /* 호버 시 배경색 */
-}
-
-.sort-buttons button.active {
-  background-color: #28a745; /* 활성화된 버튼 배경색 */
-  color: white; /* 글자색 */
-  border: 2px solid #218838; /* 활성화된 버튼 테두리 */
-}
-
-.sort-buttons button:focus {
-  outline: none; /* 포커스 시 아웃라인 제거 */
 }
