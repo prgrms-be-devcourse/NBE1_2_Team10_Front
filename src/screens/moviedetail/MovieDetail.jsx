@@ -49,6 +49,8 @@ export const MovieDetail = ({className, ...props}) => {
 
     const [dibIsActive, setDibIsActive] = useState(false);
 
+    const [likeIsActive, setLikeIsActive] = useState({});
+    const [dislikeIsActive, setDislikeIsActive] = useState({});
 
     const navigate = useNavigate();
 
@@ -158,6 +160,85 @@ export const MovieDetail = ({className, ...props}) => {
             console.error("Error posting review:", error);
         }
     }
+
+    const likeProcess = async (commentId) => {
+        console.log("좋아요 한줄평 아이디: ",commentId)
+        console.log("좋아요 현재 상태: ", likeIsActive)
+        try {
+            if (likeIsActive[commentId]) {
+                setLikeIsActive((prev) => ({ ...prev, [commentId]: false }));
+                console.log("좋아요 현재 상태: ", likeIsActive)
+
+                await axios.delete(
+                    `/movies/${movie.movieId}/comments/${commentId}/like`,
+                    null,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'accessToken': accessToken,
+                        },
+                    }
+                );
+            } else {
+                setLikeIsActive((prev) => ({ ...prev, [commentId]: true }));
+                console.log("좋아요 현재 상태: ", likeIsActive)
+
+                await axios.post(
+                    `/movies/${movie.movieId}/comments/${commentId}/like`,
+                    null,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'accessToken': accessToken,
+                        },
+                    }
+                );
+            }
+        } catch (error) {
+            console.error("좋아요 실패", error);
+        }
+    };
+
+    const dislikeProcess = async (commentId) => {
+        try {
+            if (dislikeIsActive[commentId]) {
+                setDislikeIsActive((prev) => ({ ...prev, [commentId]: false }));
+                await axios.delete(
+                    `/movies/${movie.movieId}/comments/${commentId}/dislike`,
+                    null,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'accessToken': accessToken,
+                        },
+                    }
+                );
+            } else {
+                setDislikeIsActive((prev) => ({ ...prev, [commentId]: true }));
+                await axios.post(
+                    `/movies/${movie.movieId}/comments/${commentId}/dislike`,
+                    null,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'accessToken': accessToken,
+                        },
+                    }
+                );
+            }
+        } catch (error) {
+            console.error("싫어요 실패", error);
+        }
+    };
+
+
+
+    const initializeStates = (commentId) => {
+        setLikeIsActive((prev) => ({ ...prev, [commentId]: false }));
+        setDislikeIsActive((prev) => ({ ...prev, [commentId]: false }));
+    };
+
+
 
     useEffect(() => {
         const fetchComments = async () => {
@@ -394,11 +475,21 @@ export const MovieDetail = ({className, ...props}) => {
                     </div>
                     <div className="detailicons">
                         <div className="heroicons-solid-hand-thumb-up">
-                            <img className="detailunion" src={heroiconssolidhandthumbup1} />
-                            <div className="detailtext5">{comments[0]?.like} </div>
+                            <img
+                                className="detailunion"
+                                src={heroiconssolidhandthumbup2}
+                                style={{ filter: likeIsActive[comments[0]?.commentId] ? 'grayscale(0%)' : 'grayscale(100%)' }}
+                                onClick={() => likeProcess(comments[0]?.commentId)}
+                            />
+                            <div className="detailtext5">{comments[0]?.like}</div>
                         </div>
                         <div className="heroicons-solid-hand-thumb-up2">
-                            <img className="detailunion" src={heroiconssolidhandthumbup2} />
+                            <img
+                                className="detailunion"
+                                src={heroiconssolidhandthumbup1}
+                                style={{ filter: likeIsActive[comments[0]?.commentId] ? 'grayscale(0%)' : 'grayscale(100%)' }}
+                                onClick={() => dislikeProcess(comments[0]?.commentId)}
+                            />
                             <div className="detailtext5">{comments[0]?.dislike} </div>
                         </div>
                     </div>
@@ -416,11 +507,19 @@ export const MovieDetail = ({className, ...props}) => {
                     </div>
                     <div className="detailicons">
                         <div className="heroicons-solid-hand-thumb-up">
-                            <img className="detailunion" src={heroiconssolidhandthumbup1} />
+                            <img
+                                className="detailunion"
+                                src={heroiconssolidhandthumbup2}
+                                onClick={() => likeProcess(comments[1]?.commentId)}
+                            />
                             <div className="detailtext5">{comments[1]?.like} </div>
                         </div>
                         <div className="heroicons-solid-hand-thumb-up2">
-                            <img className="detailunion" src={heroiconssolidhandthumbup2} />
+                            <img
+                                className="detailunion"
+                                src={heroiconssolidhandthumbup1}
+                                onClick={() => dislikeProcess(comments[1]?.commentId)}
+                            />
                             <div className="detailtext5">{comments[1]?.dislike} </div>
                         </div>
                     </div>
@@ -438,11 +537,19 @@ export const MovieDetail = ({className, ...props}) => {
                     </div>
                     <div className="detailicons">
                         <div className="heroicons-solid-hand-thumb-up">
-                            <img className="detailunion" src={heroiconssolidhandthumbup1} />
+                            <img
+                                className="detailunion"
+                                src={heroiconssolidhandthumbup2}
+                                onClick={() => likeProcess(comments[2]?.commentId)}
+                            />
                             <div className="detailtext5">{comments[2]?.like} </div>
                         </div>
                         <div className="heroicons-solid-hand-thumb-up2">
-                            <img className="detailunion" src={heroiconssolidhandthumbup2} />
+                            <img
+                                className="detailunion"
+                                src={heroiconssolidhandthumbup1}
+                                onClick={() => dislikeProcess(comments[2]?.commentId)}
+                            />
                             <div className="detailtext5">{comments[2]?.dislike} </div>
                         </div>
                     </div>
