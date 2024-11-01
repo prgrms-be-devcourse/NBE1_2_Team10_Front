@@ -1,10 +1,86 @@
 import "./ReviewWrite.css";
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import {CKEditor} from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
+//<editor-fold desc="imports">
+import {
+    ClassicEditor,
+    AccessibilityHelp,
+    Alignment,
+    Autoformat,
+    AutoImage,
+    Autosave,
+    BalloonToolbar,
+    BlockQuote,
+    BlockToolbar,
+    Bold,
+    Code,
+    CodeBlock,
+    Essentials,
+    FindAndReplace,
+    FontBackgroundColor,
+    FontColor,
+    FontFamily,
+    FontSize,
+    Heading,
+    Highlight,
+    HorizontalLine,
+    ImageBlock,
+    ImageCaption,
+    ImageInline,
+    ImageInsert,
+    ImageInsertViaUrl,
+    ImageResize,
+    ImageStyle,
+    ImageTextAlternative,
+    ImageToolbar,
+    ImageUpload,
+    Indent,
+    IndentBlock,
+    Italic,
+    Link,
+    LinkImage,
+    List,
+    ListProperties,
+    Markdown,
+    MediaEmbed,
+    Paragraph,
+    PasteFromOffice,
+    RemoveFormat,
+    SelectAll,
+    SimpleUploadAdapter,
+    SpecialCharacters,
+    SpecialCharactersArrows,
+    SpecialCharactersCurrency,
+    SpecialCharactersEssentials,
+    SpecialCharactersLatin,
+    SpecialCharactersMathematical,
+    SpecialCharactersText,
+    Strikethrough,
+    Subscript,
+    Superscript,
+    Table,
+    TableCaption,
+    TableCellProperties,
+    TableColumnResize,
+    TableProperties,
+    TableToolbar,
+    TextTransformation,
+    TodoList,
+    Underline,
+    Undo
+} from 'ckeditor5';
+//</editor-fold>
+
+import translations from 'ckeditor5/translations/ko.js';
+import 'ckeditor5/ckeditor5.css';
+import './ReviewWrite.css'
+
+
 import {useLocation} from 'react-router-dom';
 import axios from "axios";
-import {useNavigate} from "react-router-dom"; // 이전 페이지로 돌아가기 위한 훅
+import {useNavigate} from "react-router-dom";
+
 
 export const ReviewWrite = ({className, ...props}) => {
 
@@ -53,6 +129,7 @@ export const ReviewWrite = ({className, ...props}) => {
 
         // 로컬 스토리지에서 accessToken 불러오기
         const accessToken = localStorage.getItem("accessToken");
+        console.log(accessToken)
 
         // CKEditor 데이터에서 HTML 태그 제거
         const plainText = editorData.replace(/<[^>]+>/g, "");
@@ -78,6 +155,250 @@ export const ReviewWrite = ({className, ...props}) => {
             console.error("데이터 전송 중 오류 발생:", error);
         }
     };
+
+    //<editor-fold desc="CKEditor 설정">
+    const editorContainerRef = useRef(null);
+    const editorRef = useRef(null);
+    const [isLayoutReady, setIsLayoutReady] = useState(false);
+
+    useEffect(() => {
+        setIsLayoutReady(true);
+
+        return () => setIsLayoutReady(false);
+    }, []);
+
+    const editorConfig = {
+        toolbar: {
+            items: [
+                'undo',
+                'redo',
+                '|',
+                'findAndReplace',
+                '|',
+                'heading',
+                '|',
+                'fontSize',
+                'fontFamily',
+                'fontColor',
+                'fontBackgroundColor',
+                '|',
+                'bold',
+                'italic',
+                'underline',
+                'strikethrough',
+                'subscript',
+                'superscript',
+                'code',
+                'removeFormat',
+                '|',
+                'specialCharacters',
+                'horizontalLine',
+                'link',
+                'insertImage',
+                'insertImageViaUrl',
+                'mediaEmbed',
+                'insertTable',
+                'highlight',
+                'blockQuote',
+                'codeBlock',
+                '|',
+                'alignment',
+                '|',
+                'bulletedList',
+                'numberedList',
+                'todoList',
+                'outdent',
+                'indent'
+            ],
+            shouldNotGroupWhenFull: false
+        },
+        plugins: [
+            AccessibilityHelp,
+            Alignment,
+            Autoformat,
+            AutoImage,
+            Autosave,
+            BalloonToolbar,
+            BlockQuote,
+            BlockToolbar,
+            Bold,
+            Code,
+            CodeBlock,
+            Essentials,
+            FindAndReplace,
+            FontBackgroundColor,
+            FontColor,
+            FontFamily,
+            FontSize,
+            Heading,
+            Highlight,
+            HorizontalLine,
+            ImageBlock,
+            ImageCaption,
+            ImageInline,
+            ImageInsert,
+            ImageInsertViaUrl,
+            ImageResize,
+            ImageStyle,
+            ImageTextAlternative,
+            ImageToolbar,
+            ImageUpload,
+            Indent,
+            IndentBlock,
+            Italic,
+            Link,
+            LinkImage,
+            List,
+            ListProperties,
+            Markdown,
+            MediaEmbed,
+            Paragraph,
+            PasteFromOffice,
+            RemoveFormat,
+            SelectAll,
+            SimpleUploadAdapter,
+            SpecialCharacters,
+            SpecialCharactersArrows,
+            SpecialCharactersCurrency,
+            SpecialCharactersEssentials,
+            SpecialCharactersLatin,
+            SpecialCharactersMathematical,
+            SpecialCharactersText,
+            Strikethrough,
+            Subscript,
+            Superscript,
+            Table,
+            TableCaption,
+            TableCellProperties,
+            TableColumnResize,
+            TableProperties,
+            TableToolbar,
+            TextTransformation,
+            TodoList,
+            Underline,
+            Undo
+        ],
+        balloonToolbar: ['bold', 'italic', '|', 'link', 'insertImage', '|', 'bulletedList', 'numberedList'],
+        blockToolbar: [
+            'fontSize',
+            'fontColor',
+            'fontBackgroundColor',
+            '|',
+            'bold',
+            'italic',
+            '|',
+            'link',
+            'insertImage',
+            'insertTable',
+            '|',
+            'bulletedList',
+            'numberedList',
+            'outdent',
+            'indent'
+        ],
+        fontFamily: {
+            supportAllValues: true
+        },
+        fontSize: {
+            options: [10, 12, 14, 'default', 18, 20, 22],
+            supportAllValues: true
+        },
+        heading: {
+            options: [
+                {
+                    model: 'paragraph',
+                    title: 'Paragraph',
+                    class: 'ck-heading_paragraph'
+                },
+                {
+                    model: 'heading1',
+                    view: 'h1',
+                    title: 'Heading 1',
+                    class: 'ck-heading_heading1'
+                },
+                {
+                    model: 'heading2',
+                    view: 'h2',
+                    title: 'Heading 2',
+                    class: 'ck-heading_heading2'
+                },
+                {
+                    model: 'heading3',
+                    view: 'h3',
+                    title: 'Heading 3',
+                    class: 'ck-heading_heading3'
+                },
+                {
+                    model: 'heading4',
+                    view: 'h4',
+                    title: 'Heading 4',
+                    class: 'ck-heading_heading4'
+                },
+                {
+                    model: 'heading5',
+                    view: 'h5',
+                    title: 'Heading 5',
+                    class: 'ck-heading_heading5'
+                },
+                {
+                    model: 'heading6',
+                    view: 'h6',
+                    title: 'Heading 6',
+                    class: 'ck-heading_heading6'
+                }
+            ]
+        },
+        image: {
+            toolbar: [
+                'toggleImageCaption',
+                'imageTextAlternative',
+                '|',
+                'imageStyle:inline',
+                'imageStyle:wrapText',
+                'imageStyle:breakText',
+                '|',
+                'resizeImage'
+            ]
+        },
+        language: 'ko',
+        link: {
+            addTargetToExternalLinks: true,
+            defaultProtocol: 'https://',
+            decorators: {
+                toggleDownloadable: {
+                    mode: 'manual',
+                    label: 'Downloadable',
+                    attributes: {
+                        download: 'file'
+                    }
+                }
+            }
+        },
+        list: {
+            properties: {
+                styles: true,
+                startIndex: true,
+                reversed: true
+            }
+        },
+        menuBar: {
+            isVisible: true
+        },
+        placeholder: 'Type or paste your content here!',
+        table: {
+            contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
+        },
+        translations: [translations]
+    };
+
+    editorConfig.simpleUpload = {
+        uploadUrl: "/ckeditor/image-upload",
+        withCredentials: false,
+        // headers: {
+        //     'Authorization': 'Bearer ' + token
+        // }
+    }
+    //</editor-fold>
 
 
     return (
@@ -159,6 +480,9 @@ export const ReviewWrite = ({className, ...props}) => {
                     <CKEditor
                         editor={ClassicEditor}
                         data={editorData}
+                        config={
+                            editorConfig
+                        }
                         onChange={(event, editor) => {
                             const data = editor.getData();
                             setEditorData(data);
