@@ -392,7 +392,7 @@ export const ReviewWrite = ({className, ...props}) => {
     };
 
     editorConfig.simpleUpload = {
-        uploadUrl: "http://localhost:8080/ckeditor/image-upload",
+        uploadUrl: "/ckeditor/image-upload",
         withCredentials: false,
         // headers: {
         //     'Authorization': 'Bearer ' + token
