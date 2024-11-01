@@ -81,7 +81,7 @@ export const Search = ({className, ...props}) => {
     };
 
     // JSON 데이터의 result 속성만 추출
-    const resultData = stateData?.result || []; // 상태에서 result 속성 추출
+    const resultData = stateData?.result.content || []; // 상태에서 result 속성 추출
 
     return (
         <div className="searchscreen">
