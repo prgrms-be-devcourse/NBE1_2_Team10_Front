@@ -51,7 +51,7 @@
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-SemiBold", sans-serif;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 150%;
   font-weight: 600;
   position: absolute;
@@ -66,19 +66,40 @@
 
 .reviewdetailscreen .reviewdetaildiv3 {
   color: #ffffff;
-  text-align: center;
+  text-align: left;
   font-family: "Manrope-SemiBold", sans-serif;
-  font-size: 36px;
+  font-size: 25px;
   line-height: 150%;
   font-weight: 600;
   position: absolute;
-  left: 150px;
+  left: 80px;
   top: 222px;
   width: 250px;
   height: 102px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.reviewdetailscreen .reviewdetaildiv12 {
+  color: #ffffff;
+  font-family: "Manrope-SemiBold", sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  position: absolute;
+  left: 161px;
+  top: 830px; /* 적절한 위치를 설정 */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.reviewdetailscreen .reviewdate {
+  color: #cccccc; /* 작성일자 색상 */
+}
+
+.reviewdetailscreen .reviewauthor {
+  font-weight: bold;
+  color: #ffffff; /* 작성자 색상 */
 }
 .reviewdetailscreen .reviewdetailnavbar {
   padding: 30px 162px 30px 162px;

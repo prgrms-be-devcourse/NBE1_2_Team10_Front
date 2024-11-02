@@ -88,7 +88,7 @@ export const MovieDetail = ({className, ...props}) => {
 
     // 리뷰 제목 클릭 시 리뷰 상세 조회 페이지로 이동
     const handleTitleClick = (reviewId) => {
-        navigate(`/movies/${movie.movieId}/reviews/${reviewId}`, {state: {review: reviewId}});
+        navigate(`/reviewdetail`, {state: {review: reviewId, movie: movie.movieId}});
     };
 
     // 개봉일 포맷팅 함수

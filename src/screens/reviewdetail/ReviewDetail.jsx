@@ -1,10 +1,17 @@
 import "./ReviewDetail.css";
-import { useNavigate } from 'react-router-dom';
-import React from "react"; // 페이지 이동을 위한 useNavigate 사용
+import {useLocation, useNavigate} from 'react-router-dom';
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 export const ReviewDetail = ({className, ...props}) => {
 
     const accessToken = localStorage.getItem('accessToken'); // accessToken을 localStorage에서 가져옴
+    const location = useLocation(); // 현재 위치 정보를 가져옴
+    const {review} = location.state || {};
+    const {movie} = location.state || {};
+
+    const [reviewDetail, setReviewDetail] = useState(null); // 상태로 관리
+
     const navigate = useNavigate(); // 페이지 이동을 위한 navigate 사용
 
     const handleLogin = () => {
@@ -27,6 +34,53 @@ export const ReviewDetail = ({className, ...props}) => {
     const handleLogoClick = () => {
         navigate("/");
     };
+
+    const formatReleaseDateTime = (date) => {
+        if (!date) {
+            console.error("Date is undefined or null");
+            return "";
+        }
+
+        const [datePart, timePart] = date.replace('T', ' ').split(' ');
+
+        const formattedDate = datePart.replace(/(\d{4})-(\d{2})-(\d{2})/, '$1.$2.$3');
+
+        const formattedTime = timePart.slice(0, 8);
+
+        return `${formattedDate} ${formattedTime}`;
+    };
+
+    useEffect(() => {
+        const fetchReviewDetail = async () => {
+            try {
+                const response = await axios.get(`/movies/${movie}/reviews/${review}`,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'accessToken': accessToken,
+                        },
+                    }
+                );
+
+                console.log("리뷰 상세 응답 결과 추출: ", response.data.result)
+
+                const detail = response.data.result;
+                setReviewDetail(detail);
+                console.log("리뷰 응답 저장 결과: ", reviewDetail)
+
+            } catch (error) {
+                console.error("리뷰 상세 내용을 불러오는 데에 실패했습니다");
+            }
+        };
+
+        fetchReviewDetail();
+    }, [movie]);
+
+    useEffect(() => {
+        console.log("업데이트된 리뷰 응답 저장 결과: ", reviewDetail);
+    }, [reviewDetail]);
+
+
     return (
         <div className="reviewdetailscreen">
             <div className="reviewdetaildiv">
@@ -34,13 +88,24 @@ export const ReviewDetail = ({className, ...props}) => {
                     {/*<div className="reviewdetailheading">Comments</div>*/}
                 </div>
                 {/*<img className="reviewdetailrectangle-513" src="rectangle-5130.svg"/>*/}
-                <div className="reviewdetaildiv2">영화 리뷰 내용</div>
-                <div className="reviewdetaildiv3">영화 리뷰 제목</div>
+                <div>
+                    {reviewDetail ? (
+                        <>
+                            <div className="reviewdetaildiv3">{reviewDetail.title}</div>
+                            <div className="reviewdetaildiv2">{reviewDetail.content}</div>
+                            <div className="reviewdetaildiv12">
+                                <span className="reviewauthor">{reviewDetail.user_alias}</span>
+                                <span className="reviewdate">{formatReleaseDateTime(reviewDetail.created_at)}</span>
+                            </div>
+                        </>
+                    ) : (
+                        <p>Loading review details...</p>
+                    )}
+                </div>
                 <div className="reviewdetailnavbar">
                     <div className="reviewdetaillogo" onClick={handleLogoClick}>
                         <div className="reviewdetailvector">
                             <img className="reviewdetailvector2" src="vector1.svg"/>
-                            <img className="reviewdetailicon" src="icon0.svg"/>
                         </div>
                         <img className="reviewdetailstream-vibe" src="stream-vibe0.svg"/>
                     </div>
