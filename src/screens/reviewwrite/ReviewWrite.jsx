@@ -42,7 +42,7 @@ import {
     LinkImage,
     List,
     ListProperties,
-    Markdown,
+    // Markdown,
     MediaEmbed,
     Paragraph,
     PasteFromOffice,
@@ -132,8 +132,8 @@ export const ReviewWrite = ({className, ...props}) => {
         console.log(accessToken)
 
         // CKEditor 데이터에서 HTML 태그 제거
-        const plainText = editorData.replace(/<[^>]+>/g, "");
-
+        const plainText = editorData;
+        console.log("CKEditor 최종 값: ",plainText)
         try {
             // 데이터를 백엔드에 POST 요청으로 전송
             await axios.post(
@@ -250,7 +250,7 @@ export const ReviewWrite = ({className, ...props}) => {
             LinkImage,
             List,
             ListProperties,
-            Markdown,
+            // Markdown,
             MediaEmbed,
             Paragraph,
             PasteFromOffice,
@@ -394,10 +394,15 @@ export const ReviewWrite = ({className, ...props}) => {
     editorConfig.simpleUpload = {
         uploadUrl: "/ckeditor/image-upload",
         withCredentials: false,
-        // headers: {
-        //     'Authorization': 'Bearer ' + token
-        // }
-    }
+        headers: {
+            'accessToken' : `${localStorage.getItem("accessToken")}`
+        }
+    };
+
+// accessToken 콘솔에 출력
+    const accessToken = localStorage.getItem("accessToken");
+    console.log("Access Token:", accessToken);
+
     //</editor-fold>
 
 
@@ -485,6 +490,7 @@ export const ReviewWrite = ({className, ...props}) => {
                         }
                         onChange={(event, editor) => {
                             const data = editor.getData();
+                            console.log("데이터 변화: ", data)
                             setEditorData(data);
                         }}
                     />

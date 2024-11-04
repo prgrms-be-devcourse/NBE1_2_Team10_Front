@@ -7,7 +7,7 @@
 }
 .reviewdetailscreen .reviewdetaildiv {
   background-color: #141414; /* 배경색을 어두운 회색(#141414)으로 설정 */
-  height: 1500px;            /* 요소의 높이를 4182px로 설정 */
+  height: 4182px;            /* 요소의 높이를 4182px로 설정 */
   overflow: hidden;          /* 요소의 내용이 넘칠 경우 보이지 않도록 설정 */
   position: relative;        /* 자식 요소의 절대 위치를 기준으로 설정 */
   width: 1920px;             /* 요소의 너비를 1900px로 설정 */
@@ -47,51 +47,71 @@
 /*  top: 340px;*/
 /*  overflow: visible;*/
 /*}*/
-.reviewdetailscreen .reviewdetaildiv2 {
-  color: #ffffff;
-  text-align: left;
-  font-family: "Manrope-SemiBold", sans-serif;
-  font-size: 20px;
-  line-height: 150%;
-  font-weight: 600;
-  position: absolute;
-  left: 161px;
-  top: 340px;
-  width: 1596px;
-  min-height: 479px; /* 최소 높이 설정 */
-  padding: 20px; /* 내부 여백 추가 */
-  border: 2px solid #ffffff; /* 흰색 테두리 추가 */
-  box-sizing: border-box; /* 패딩과 테두리를 width와 height에 포함 */
-}
-
 .reviewdetailscreen .reviewdetaildiv3 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-SemiBold", sans-serif;
-  font-size: 25px;
+  font-size: 40px;
   line-height: 150%;
   font-weight: 600;
   position: absolute;
-  left: 80px;
-  top: 222px;
+  left: 60px;
+  top: 210px;
   width: 250px;
   height: 102px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .reviewdetailscreen .reviewdetaildiv12 {
   color: #ffffff;
   font-family: "Manrope-SemiBold", sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 150%;
   position: absolute;
-  left: 161px;
-  top: 830px; /* 적절한 위치를 설정 */
+  left: 170px;
+  top: 310px; /* Place it directly below the title */
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
+
+/*.reviewdetailscreen .reviewdetaildiv2 {*/
+/*  color: #ffffff;*/
+/*  text-align: left;*/
+/*  font-family: "Manrope-SemiBold", sans-serif;*/
+/*  font-size: 22px;*/
+/*  line-height: 150%;*/
+/*  font-weight: 600;*/
+/*  position: absolute;*/
+/*  left: 161px;*/
+/*  top: 380px; !* Adjust to be below user_alias and created_at *!*/
+/*  width: 1596px;*/
+/*  min-height: 479px;*/
+/*  padding: 20px;*/
+/*  border: 2px solid #ffffff;*/
+/*  box-sizing: border-box;*/
+/*}*/
+
+.reviewdetailscreen .reviewdetaildiv2 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Manrope-SemiBold", sans-serif;
+  font-size: 22px;
+  line-height: 150%;
+  font-weight: 600;
+  position: absolute; /* absolute로 변경 */
+  width: 80%;
+  padding: 20px;
+  box-sizing: border-box;
+  top: 400px; /* 원하는 위치를 지정 */
+  left: 161px; /* 위치 조정 */
+  max-height: 3000px;
+  overflow-y: auto;
+  border: 2px solid #ffffff;
+}
+
 
 .reviewdetailscreen .reviewdate {
   color: #cccccc; /* 작성일자 색상 */
@@ -865,4 +885,28 @@
   left: 248px;
   top: 1767px;
   width: 152px;
+}
+
+/* 추천 버튼 스타일 */
+.reviewdetailscreen .like-button {
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+/* 아이콘 크기 조정 */
+.reviewdetailscreen .like-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* 호버 효과 */
+.reviewdetailscreen .like-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }

@@ -414,7 +414,7 @@
   left: 1584px;
   top: 3032px;
 }
-.detailscreen .text2 {
+.detailscreen .detailtext2 {
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-Medium", sans-serif;
@@ -846,7 +846,7 @@
   color: #ffffff;
   text-align: left;
   font-family: "Manrope-SemiBold", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 150%;
   font-weight: 600;
   position: absolute;
@@ -1551,4 +1551,33 @@
 /* 빈 별 스타일 */
 .star.empty {
   color: rgb(128, 128, 128); /* 빈 별은 회색 */
+}
+
+
+/* 정렬 버튼 */
+/* 좋아요순, 최신순 버튼을 감싸는 컨테이너 */
+.detailscreen .review-sort-buttons {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  left: 300px; /* 필요에 따라 위치 조정 */
+  top: 3060px;
+}
+
+/* 각 버튼 스타일 */
+.detailscreen .sort-button {
+  color: #ffffff;
+  font-family: "Manrope-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 150%;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* 호버 시 배경색 살짝 변경 */
+.detailscreen .sort-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }

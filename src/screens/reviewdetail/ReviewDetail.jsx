@@ -2,6 +2,7 @@ import "./ReviewDetail.css";
 import {useLocation, useNavigate} from 'react-router-dom';
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import heroiconssolidhandthumbup2 from './public/heroicons-solid-hand-thumb-up2.svg';
 
 export const ReviewDetail = ({className, ...props}) => {
 
@@ -50,6 +51,23 @@ export const ReviewDetail = ({className, ...props}) => {
         return `${formattedDate} ${formattedTime}`;
     };
 
+    const handleLikeClick = async() => {
+        try {
+            await axios.patch(
+                `/movies/${movie}/reviews/${review}/like`,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                        'accessToken': accessToken,
+                }
+            }
+
+        );
+        } catch (error) {
+            console.error("리뷰 추천 실패", error);
+        }
+    }
+
     useEffect(() => {
         const fetchReviewDetail = async () => {
             try {
@@ -65,6 +83,7 @@ export const ReviewDetail = ({className, ...props}) => {
                 console.log("리뷰 상세 응답 결과 추출: ", response.data.result)
 
                 const detail = response.data.result;
+                console.log("리뷰 상세 응답 결과: ", detail.content); // 여기서 내용 확인
                 setReviewDetail(detail);
                 console.log("리뷰 응답 저장 결과: ", reviewDetail)
 
@@ -91,12 +110,17 @@ export const ReviewDetail = ({className, ...props}) => {
                 <div>
                     {reviewDetail ? (
                         <>
-                            <div className="reviewdetaildiv3">{reviewDetail.title}</div>
-                            <div className="reviewdetaildiv2">{reviewDetail.content}</div>
+                            <div className="reviewdetaildiv3">
+                                {reviewDetail.title}
+                                <button className="like-button" onClick={handleLikeClick}>
+                                    <img src={heroiconssolidhandthumbup2} alt="like" className="like-icon" />
+                                </button>
+                            </div>
                             <div className="reviewdetaildiv12">
                                 <span className="reviewauthor">{reviewDetail.user_alias}</span>
                                 <span className="reviewdate">{formatReleaseDateTime(reviewDetail.created_at)}</span>
                             </div>
+                            <div className="reviewdetaildiv2" dangerouslySetInnerHTML={{ __html: reviewDetail.content }} />
                         </>
                     ) : (
                         <p>Loading review details...</p>
