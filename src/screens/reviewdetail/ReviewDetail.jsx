@@ -2,6 +2,7 @@ import "./ReviewDetail.css";
 import {useLocation, useNavigate} from 'react-router-dom';
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import heroiconssolidhandthumbup2 from './public/heroicons-solid-hand-thumb-up2.svg';
 
 export const ReviewDetail = ({className, ...props}) => {
 
@@ -50,6 +51,23 @@ export const ReviewDetail = ({className, ...props}) => {
         return `${formattedDate} ${formattedTime}`;
     };
 
+    const handleLikeClick = async() => {
+        try {
+            await axios.patch(
+                `/movies/${movie}/reviews/${review}/like`,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                        'accessToken': accessToken,
+                }
+            }
+
+        );
+        } catch (error) {
+            console.error("리뷰 추천 실패", error);
+        }
+    }
+
     useEffect(() => {
         const fetchReviewDetail = async () => {
             try {
@@ -92,7 +110,12 @@ export const ReviewDetail = ({className, ...props}) => {
                 <div>
                     {reviewDetail ? (
                         <>
-                            <div className="reviewdetaildiv3">{reviewDetail.title}</div>
+                            <div className="reviewdetaildiv3">
+                                {reviewDetail.title}
+                                <button className="like-button" onClick={handleLikeClick}>
+                                    <img src={heroiconssolidhandthumbup2} alt="like" className="like-icon" />
+                                </button>
+                            </div>
                             <div className="reviewdetaildiv12">
                                 <span className="reviewauthor">{reviewDetail.user_alias}</span>
                                 <span className="reviewdate">{formatReleaseDateTime(reviewDetail.created_at)}</span>

@@ -47,6 +47,9 @@ export const MovieDetail = ({className, ...props}) => {
     const [reviews, setReviews] = useState([]);  // 리뷰 목록
     const [comments, setComments] = useState([]);  // 한줄평 목록
 
+    const [briefReviewSort, setBRSortType] = useState('LATEST');
+    const [reviewSort, setReviewSortType] = useState('LATEST');
+
     const [dibIsActive, setDibIsActive] = useState(false);
 
     const [likeIsActive, setLikeIsActive] = useState({});
@@ -238,6 +241,14 @@ export const MovieDetail = ({className, ...props}) => {
         setDislikeIsActive((prev) => ({ ...prev, [commentId]: false }));
     };
 
+    const handleBRSortChange = (type) => {
+        setBRSortType(type);
+    };
+
+    const handleReviewSortChange = (type) => {
+        setReviewSortType(type);
+    }
+
 
 
     useEffect(() => {
@@ -245,7 +256,7 @@ export const MovieDetail = ({className, ...props}) => {
             try {
                 const response = await axios.get(`/movies/${movie.movieId}/comments`,
                     {
-                    params: { page: 0, sortType : 'LATEST'},
+                    params: { page: 0, sortType : briefReviewSort},
                 });
 
                 console.log('서버 응답 데이터:', response.data);
@@ -274,7 +285,7 @@ export const MovieDetail = ({className, ...props}) => {
         };
 
         fetchComments();
-    }, [movie.movieId]);
+    }, [movie.movieId, briefReviewSort]);
 
 
     useEffect(() => {
@@ -282,7 +293,7 @@ export const MovieDetail = ({className, ...props}) => {
             try {
                 const response = await axios.get(`/movies/${movie.movieId}/reviews/list`,
                     {
-                        params: { page: 0, sort : 'LATEST', content : false},
+                        params: { page: 0, sort : reviewSort, content : false},
                     });
 
                 console.log("서버와 연결 성공");
@@ -312,7 +323,7 @@ export const MovieDetail = ({className, ...props}) => {
         };
 
         fetchReviews();
-    }, [movie.movieId]);
+    }, [movie.movieId, reviewSort]);
 
 
 
@@ -429,7 +440,7 @@ export const MovieDetail = ({className, ...props}) => {
                         >
                             {reviews[0]?.title}
                         </div>
-                        <div className="detailheading3">{reviews[0]?.alias || '익명'} </div>
+                        <div className="detailheading3">추천 {reviews[0]?.likes} </div>
                         <div className="detailheading6">{formatReleaseDateTime(reviews[0]?.createdAt)}</div>
                     </div>
                 </div>
@@ -440,7 +451,7 @@ export const MovieDetail = ({className, ...props}) => {
                         >
                             {reviews[1]?.title}
                         </div>
-                        <div className="detailheading3">{reviews[1]?.alias || '익명'} </div>
+                        <div className="detailheading3">추천 {reviews[1]?.likes} </div>
                         <div className="detailheading6">{formatReleaseDateTime(reviews[1]?.createdAt)}</div>
                     </div>
                 </div>
@@ -451,12 +462,16 @@ export const MovieDetail = ({className, ...props}) => {
                         >
                             {reviews[2]?.title}
                         </div>
-                        <div className="detailheading3">{reviews[2]?.alias || '익명'} </div>
+                        <div className="detailheading3">추천 {reviews[2]?.likes} </div>
                         <div className="detailheading6">{formatReleaseDateTime(reviews[2]?.createdAt)}</div>
                     </div>
                 </div>
 
                 <div className="detailheading7">Reviews</div>
+                <div className="review-sort-buttons">
+                    <button className="sort-button" onClick={() => handleReviewSortChange("LIKE")}>좋아요순</button>
+                    <button className="sort-button" onClick={() => handleReviewSortChange("LATEST")}>최신순</button>
+                </div>
                 <div className="detailbutton2" onClick={handleAddReviewClick}>
                     <div className="detailtext2">Add Your Review</div>
                 </div>
@@ -464,33 +479,33 @@ export const MovieDetail = ({className, ...props}) => {
                 <div className="detailline-6"></div>
 
                 <div className="detailfooter5">
-                    <div className="detailtext3">{comments[0]?.userId || '익명'} </div>
+                    <div className="detailtext3">{comments[2]?.userId || '익명'} </div>
                     <div className="sub-container-instance">
                         {renderStars(comments[0]?.rating)}
                     </div>
                     <div className="detailgroup-6">
                         <div className="detailrectangle-515"></div>
-                        <div className="detaildiv6">{comments[0]?.cmtContent} </div>
-                        <div className="detailtext4">{formatReleaseDateTime(comments[0]?.createdAt)} </div>
+                        <div className="detaildiv6">{comments[2]?.cmtContent} </div>
+                        <div className="detailtext4">{formatReleaseDateTime(comments[2]?.createdAt)} </div>
                     </div>
                     <div className="detailicons">
                         <div className="heroicons-solid-hand-thumb-up">
                             <img
                                 className="detailunion"
                                 src={heroiconssolidhandthumbup2}
-                                style={{ filter: likeIsActive[comments[0]?.commentId] ? 'grayscale(0%)' : 'grayscale(100%)' }}
-                                onClick={() => likeProcess(comments[0]?.commentId)}
+                                style={{ filter: likeIsActive[comments[2]?.commentId] ? 'grayscale(0%)' : 'grayscale(100%)' }}
+                                onClick={() => likeProcess(comments[2]?.commentId)}
                             />
-                            <div className="detailtext5">{comments[0]?.like}</div>
+                            <div className="detailtext5">{comments[2]?.like}</div>
                         </div>
                         <div className="heroicons-solid-hand-thumb-up2">
                             <img
                                 className="detailunion"
                                 src={heroiconssolidhandthumbup1}
-                                style={{ filter: likeIsActive[comments[0]?.commentId] ? 'grayscale(0%)' : 'grayscale(100%)' }}
-                                onClick={() => dislikeProcess(comments[0]?.commentId)}
+                                style={{ filter: likeIsActive[comments[2]?.commentId] ? 'grayscale(0%)' : 'grayscale(100%)' }}
+                                onClick={() => dislikeProcess(comments[2]?.commentId)}
                             />
-                            <div className="detailtext5">{comments[0]?.dislike} </div>
+                            <div className="detailtext5">{comments[2]?.dislike} </div>
                         </div>
                     </div>
                 </div>
@@ -526,37 +541,41 @@ export const MovieDetail = ({className, ...props}) => {
                 </div>
 
                 <div className="detailfooter7">
-                    <div className="detailtext3">{comments[2]?.userId || '익명'} </div>
+                    <div className="detailtext3">{comments[0]?.userId || '익명'} </div>
                     <div className="sub-container-instance">
-                        {renderStars(comments[2]?.rating)}
+                        {renderStars(comments[0]?.rating)}
                     </div>
                     <div className="detailgroup-6">
                         <div className="detailrectangle-515"></div>
-                        <div className="detaildiv6">{comments[2]?.cmtContent} </div>
-                        <div className="detailtext4">{formatReleaseDateTime(comments[2]?.createdAt)} </div>
+                        <div className="detaildiv6">{comments[0]?.cmtContent} </div>
+                        <div className="detailtext4">{formatReleaseDateTime(comments[0]?.createdAt)} </div>
                     </div>
                     <div className="detailicons">
                         <div className="heroicons-solid-hand-thumb-up">
                             <img
                                 className="detailunion"
                                 src={heroiconssolidhandthumbup2}
-                                onClick={() => likeProcess(comments[2]?.commentId)}
+                                onClick={() => likeProcess(comments[0]?.commentId)}
                             />
-                            <div className="detailtext5">{comments[2]?.like} </div>
+                            <div className="detailtext5">{comments[0]?.like} </div>
                         </div>
                         <div className="heroicons-solid-hand-thumb-up2">
                             <img
                                 className="detailunion"
                                 src={heroiconssolidhandthumbup1}
-                                onClick={() => dislikeProcess(comments[2]?.commentId)}
+                                onClick={() => dislikeProcess(comments[0]?.commentId)}
                             />
-                            <div className="detailtext5">{comments[2]?.dislike} </div>
+                            <div className="detailtext5">{comments[0]?.dislike} </div>
                         </div>
                     </div>
                 </div>
 
                 <div className="detailsub-container5">
                     <div className="detailheading8">Brief Reviews</div>
+                    <div className="brief-review-sort-buttons">
+                        <button className="sort-button" onClick={() => handleBRSortChange("LIKE")}>좋아요순</button>
+                        <button className="sort-button" onClick={() => handleBRSortChange("LATEST")}>최신순</button>
+                    </div>
                     <div className="detailbutton3" onClick={handleAddBriefReviewClick}>
                         <div className="detailtext2">Add Your Brief Review</div>
                     </div>

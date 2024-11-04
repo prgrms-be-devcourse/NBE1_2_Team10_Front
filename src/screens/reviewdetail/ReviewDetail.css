@@ -886,3 +886,27 @@
   top: 1767px;
   width: 152px;
 }
+
+/* 추천 버튼 스타일 */
+.reviewdetailscreen .like-button {
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+/* 아이콘 크기 조정 */
+.reviewdetailscreen .like-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* 호버 효과 */
+.reviewdetailscreen .like-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
