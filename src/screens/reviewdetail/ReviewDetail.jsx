@@ -93,11 +93,11 @@ export const ReviewDetail = ({className, ...props}) => {
                     {reviewDetail ? (
                         <>
                             <div className="reviewdetaildiv3">{reviewDetail.title}</div>
-                            <div className="reviewdetaildiv2" dangerouslySetInnerHTML={{ __html: reviewDetail.content }} />
                             <div className="reviewdetaildiv12">
                                 <span className="reviewauthor">{reviewDetail.user_alias}</span>
                                 <span className="reviewdate">{formatReleaseDateTime(reviewDetail.created_at)}</span>
                             </div>
+                            <div className="reviewdetaildiv2" dangerouslySetInnerHTML={{ __html: reviewDetail.content }} />
                         </>
                     ) : (
                         <p>Loading review details...</p>
