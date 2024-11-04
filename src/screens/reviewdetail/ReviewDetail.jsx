@@ -65,6 +65,7 @@ export const ReviewDetail = ({className, ...props}) => {
                 console.log("리뷰 상세 응답 결과 추출: ", response.data.result)
 
                 const detail = response.data.result;
+                console.log("리뷰 상세 응답 결과: ", detail.content); // 여기서 내용 확인
                 setReviewDetail(detail);
                 console.log("리뷰 응답 저장 결과: ", reviewDetail)
 
@@ -92,7 +93,7 @@ export const ReviewDetail = ({className, ...props}) => {
                     {reviewDetail ? (
                         <>
                             <div className="reviewdetaildiv3">{reviewDetail.title}</div>
-                            <div className="reviewdetaildiv2">{reviewDetail.content}</div>
+                            <div className="reviewdetaildiv2" dangerouslySetInnerHTML={{ __html: reviewDetail.content }} />
                             <div className="reviewdetaildiv12">
                                 <span className="reviewauthor">{reviewDetail.user_alias}</span>
                                 <span className="reviewdate">{formatReleaseDateTime(reviewDetail.created_at)}</span>
